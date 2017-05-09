@@ -1,0 +1,109 @@
+---
+tag: "CAF_11028/spanish_yahoo.txt"
+testCaseInformation:
+  associatedTickets: "CAF-2665"
+  comments: "CAF_11028/spanish_yahoo.txt"
+  description: "Markup Worker support for Yahoo! Mail"
+  testCaseId: "CAF_11028"
+inputData:
+  containerId: null
+  email: true
+  hashConfiguration:
+  - fields:
+    - name: "To"
+      normalizationType: "NAME_ONLY"
+    - name: "From"
+      normalizationType: "NAME_ONLY"
+    - name: "Body"
+      normalizationType: "REMOVE_WHITESPACE_AND_LINKS"
+    hashFunctions:
+    - "XXHASH64"
+    name: "Normalized"
+    scope: "EMAIL_SPECIFIC"
+  inputFile: "CAF_11028/spanish_yahoo.txt"
+  outputFieldList:
+  - field: "SECTION_SORT"
+    xPathExpression: "/root/email[1]/headers/Sent/@dateUtc"
+  - field: "SECTION_ID"
+    xPathExpression: "/root/email[1]/hash/digest/@value"
+  - field: "PARENT_ID"
+    xPathExpression: "/root/email[2]/hash/digest/@value"
+  - field: "ROOT_ID"
+    xPathExpression: "/root/email[last()]/hash/digest/@value"
+  - field: "XML"
+    xPathExpression: "."
+  sourceData:
+    subject:
+    - "CAF Test Extract - simple"
+    from:
+    - "Admin/hpq%HPQ@hpswlabs.hp.com"
+    to:
+    - "Admin/hpq%hpq@hpswlabs.hp.com"
+    sent:
+    - "Thu, 19 Nov 2015 09:25:21 +0000"
+  storageReference: null
+  useDataStore: false
+expectedOutputData:
+  comparisonType: "TEXT"
+  expectedContentFile: null
+  expectedSimilarityPercentage: 0
+  fieldList:
+  - name: "SECTION_SORT"
+    value: "2016-11-30T05:22:23Z"
+  - name: "SECTION_ID"
+    value: "c9b758ad340a670a"
+  - name: "PARENT_ID"
+    value: "b842ebd2ebf138cf"
+  - name: "ROOT_ID"
+    value: "1fcb24d3f951d3a5"
+  - name: "XML"
+    value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<root><subject>CAF Test\
+      \ Extract - simple</subject><from>Admin/hpq%HPQ@hpswlabs.hp.com</from><to>Admin/hpq%hpq@hpswlabs.hp.com</to><CONTENT><email><hash\
+      \ name=\"Normalized\"><config><fields><field name=\"To\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"From\" normalizationType=\"NAME_ONLY\" /><field\
+      \ name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest\
+      \ function=\"XXHASH64\" value=\"c9b758ad340a670a\" /></hash><headers><From>From:\
+      \ Martinez, Mauricio</From>\r\n<Sent dateUtc=\"2016-11-30T05:22:23Z\">Sent:\
+      \ Wed Nov 30 05:22:23 2016</Sent>\r\n<To>To: Dyer, Daniel; openvpn.community@lists.com</To>\r\
+      \n<Subject>Subject: Re: FW: [openvpn.announce] Migration of osprey gateway</Subject>\r\
+      \n<Importance>Importance: Normal</Importance>\r\n<Attachments>Attachments: unknown-M2IDRY</Attachments>\r\
+      \n</headers><body>\r\nThis is the information. \r\n\r\n\r\n\r\n\r\n\r\n-- \r\
+      \n\r\n-------\r\nSALUDOS\r\nMauricio Martínez Garcia\r\nES SW CMS MngSolSrv\r\
+      \nIT Consultant - HP Enterprise Business México.\r\n+00 (00) 0000 0000 office\
+      \ |Lync redacted | Skype redacted| mauricio.martinez@hpe.com\r\nProlongació\
+      n Reforma 700 | Lomas de Santa Fe  |  01210  México DF | Mexico www.hpe.com\r\
+      \nLet´s Do Amazing\r\n\r\n\r\n\r\n\r\n</body></email><divider>-----Mensaje original-----\r\
+      \n</divider><email><hash name=\"Normalized\"><config><fields><field name=\"\
+      To\" normalizationType=\"NAME_ONLY\" /><field name=\"From\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\"\
+      \ /></fields></config><digest function=\"XXHASH64\" value=\"b842ebd2ebf138cf\"\
+      \ /></hash><headers><From>De: \"Dyer, Daniel\" &lt;dan.dyer@hpe.com&gt;</From>\r\
+      \n<Reply-to>Reply-to: \"Dyer, Daniel\" &lt;dan.dyer@hpe.com&gt;</Reply-to>\r\
+      \n<To>Para: openvpn.community@lists.com &lt;openvpn.community@lists.com&gt;</To>\r\
+      \n<Cc>Cc: \"Dyer, Daniel\" &lt;dan.dyer@hpe.com&gt;</Cc>\r\n<Subject>Asunto:\
+      \ FW: [openvpn.announce] Migration of osprey gateway</Subject>\r\n<Sent dateUtc=\"\
+      2016-11-30T03:23:10Z\">Fecha: Wed, 30 Nov 2016 03:23:10 +0000</Sent>\r\n</headers><body>\r\
+      \nWhat is the full DNS name of the gateway we should be using?\r\n \r\nThanks,\r\
+      \nDan\r\n \r\n</body></email><email><hash name=\"Normalized\"><config><fields><field\
+      \ name=\"To\" normalizationType=\"NAME_ONLY\" /><field name=\"From\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\"\
+      \ /></fields></config><digest function=\"XXHASH64\" value=\"1fcb24d3f951d3a5\"\
+      \ /></hash><headers><From>From: &lt;openvpn.announce-request@lists.com&gt; on\
+      \ behalf of \"Carson, Kevin (SSA SDS, Virtualization)\" &lt;kevin.carson@hpe.com&gt;</From>\r\
+      \n<Reply-To>Reply-To: \"Carson, Kevin (SSA SDS, Virtualization)\" &lt;kevin.carson@hpe.com&gt;</Reply-To>\r\
+      \n<Sent dateUtc=\"2016-11-28T10:37:00Z\">Date: Monday, November 28, 2016 at\
+      \ 10:37 AM</Sent>\r\n<To>To: \"openvpn.announce@lists.com\" &lt;openvpn.announce@lists.com&gt;</To>\r\
+      \n<Subject>Subject: [openvpn.announce] Migration of osprey gateway</Subject>\r\
+      \n</headers><body> \r\nYou are receiving this message as a member of the OpenVPN\
+      \ user community which is an Open Source Profession sponsored project.\r\n\r\
+      \nAction May Be Required\r\n\r\nThe OpenVPN project is continuing with HPE.\
+      \ As such, the DNS names associated with the gateways need to be changed along\
+      \ with outstanding software environment updates.\r\n\r\nChanges will be effected\
+      \ to the osprey gateway first starting November 29, 2016. All users should be\
+      \ connecting to osprey before this time or they will experience connectivity\
+      \ issues. After the changes have been applied, a new announcement will be sent\
+      \ out for users to resume using the osprey gateway.\r\n\r\nPlease direct any\
+      \ questions/discussion to the openvpn community mailing list -- openvpn.community@lists.com&lt;mailto:openvpn.community@lists.com&gt;\r\
+      \n\r\nThe OpenVPN administrators.\r\n\r\n</body></email></CONTENT><sent>Thu,\
+      \ 19 Nov 2015 09:25:21 +0000</sent></root>\r\n"
+  status: "COMPLETED"

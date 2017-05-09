@@ -1,0 +1,79 @@
+---
+tag: "polish-email.txt"
+testCaseInformation:
+  associatedTickets: null
+  comments: "polish-email.txt"
+  description: null
+  testCaseId: "polish-email.txt"
+inputData:
+  containerId: null
+  email: true
+  hashConfiguration:
+  - fields:
+    - name: "To"
+      normalizationType: "NAME_ONLY"
+    - name: "From"
+      normalizationType: "NAME_ONLY"
+    - name: "Body"
+      normalizationType: "REMOVE_WHITESPACE_AND_LINKS"
+    hashFunctions:
+    - "XXHASH64"
+    name: "Normalized"
+    scope: "EMAIL_SPECIFIC"
+  inputFile: "polish-email.txt"
+  outputFieldList:
+  - field: "SECTION_SORT"
+    xPathExpression: "/root/email[1]/headers/Sent/@dateUtc"
+  - field: "SECTION_ID"
+    xPathExpression: "/root/email[1]/hash/digest/@value"
+  - field: "PARENT_ID"
+    xPathExpression: "/root/email[2]/hash/digest/@value"
+  - field: "ROOT_ID"
+    xPathExpression: "/root/email[last()]/hash/digest/@value"
+  - field: "XML"
+    xPathExpression: "."
+  sourceData:
+    subject:
+    - "CAF Test Extract - simple"
+    from:
+    - "Admin/hpq%HPQ@hpswlabs.hp.com"
+    to:
+    - "Admin/hpq%hpq@hpswlabs.hp.com"
+    sent:
+    - "Thu, 19 Nov 2015 09:25:21 +0000"
+  storageReference: null
+  useDataStore: false
+expectedOutputData:
+  comparisonType: "TEXT"
+  expectedContentFile: null
+  expectedSimilarityPercentage: 0
+  fieldList:
+  - name: "SECTION_SORT"
+    value: "2017-01-06T15:19:31Z"
+  - name: "SECTION_ID"
+    value: "7a7896ea45f966d9"
+  - name: "PARENT_ID"
+    value: "d66b932788c35049"
+  - name: "ROOT_ID"
+    value: "d66b932788c35049"
+  - name: "XML"
+    value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<root><subject>CAF Test\
+      \ Extract - simple</subject><from>Admin/hpq%HPQ@hpswlabs.hp.com</from><to>Admin/hpq%hpq@hpswlabs.hp.com</to><CONTENT><email><hash\
+      \ name=\"Normalized\"><config><fields><field name=\"To\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"From\" normalizationType=\"NAME_ONLY\" /><field\
+      \ name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest\
+      \ function=\"XXHASH64\" value=\"7a7896ea45f966d9\" /></hash><headers><From>From:\
+      \ Aga W</From>\r\n<Sent dateUtc=\"2017-01-06T15:19:31Z\">Sent: Fri Jan 6 15:19:31\
+      \ 2017</Sent>\r\n<To>To: Smith, Conal</To>\r\n<Subject>Subject: Re: Hello, test\
+      \ email</Subject>\r\n<Importance>Importance: Normal</Importance>\r\n</headers><body>\r\
+      \nHi! Here's your random message, that you asked for:)\r\nHave a great day \r\
+      \n\r\n</body></email><email><hash name=\"Normalized\"><config><fields><field\
+      \ name=\"To\" normalizationType=\"NAME_ONLY\" /><field name=\"From\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\"\
+      \ /></fields></config><digest function=\"XXHASH64\" value=\"d66b932788c35049\"\
+      \ /></hash><headers>W dniu <Sent>piątek, 6 stycznia 2017 Smith</Sent>,<From>\
+      \ Conal &lt;conal.smith@hpe.com&gt; </From>napisał:\r\n</headers><body>\r\n\
+      Hi\r\n \r\nThis is a test email to see what a  is, sent from Outlook.\r\n \r\
+      \nThanks\r\n \r\n \r\n</body></email></CONTENT><sent>Thu, 19 Nov 2015 09:25:21\
+      \ +0000</sent></root>\r\n"
+  status: "COMPLETED"

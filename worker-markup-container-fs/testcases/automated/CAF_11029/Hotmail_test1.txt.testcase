@@ -1,0 +1,78 @@
+---
+tag: "CAF_11029/Hotmail_test1.txt"
+testCaseInformation:
+  associatedTickets: "CAF-2665"
+  comments: "CAF_11029/Hotmail_test1.txt"
+  description: "Markup Worker support for Hotmail"
+  testCaseId: "CAF_11029"
+inputData:
+  containerId: null
+  email: true
+  hashConfiguration:
+  - fields:
+    - name: "To"
+      normalizationType: "NAME_ONLY"
+    - name: "From"
+      normalizationType: "NAME_ONLY"
+    - name: "Body"
+      normalizationType: "REMOVE_WHITESPACE_AND_LINKS"
+    hashFunctions:
+    - "XXHASH64"
+    name: "Normalized"
+    scope: "EMAIL_SPECIFIC"
+  inputFile: "CAF_11029/Hotmail_test1.txt"
+  outputFieldList:
+  - field: "SECTION_SORT"
+    xPathExpression: "/root/email[1]/headers/Sent/@dateUtc"
+  - field: "SECTION_ID"
+    xPathExpression: "/root/email[1]/hash/digest/@value"
+  - field: "PARENT_ID"
+    xPathExpression: "/root/email[2]/hash/digest/@value"
+  - field: "ROOT_ID"
+    xPathExpression: "/root/email[last()]/hash/digest/@value"
+  - field: "XML"
+    xPathExpression: "."
+  sourceData:
+    subject:
+    - "CAF Test Extract - simple"
+    from:
+    - "Admin/hpq%HPQ@hpswlabs.hp.com"
+    to:
+    - "Admin/hpq%hpq@hpswlabs.hp.com"
+    sent:
+    - "Thu, 19 Nov 2015 09:25:21 +0000"
+  storageReference: null
+  useDataStore: false
+expectedOutputData:
+  comparisonType: "TEXT"
+  expectedContentFile: null
+  expectedSimilarityPercentage: 0
+  fieldList:
+  - name: "SECTION_SORT"
+    value: "2012-04-02T13:47:37Z"
+  - name: "SECTION_ID"
+    value: "49b15c8ef630cd1a"
+  - name: "PARENT_ID"
+    value: "4fe77513a8a6c49b"
+  - name: "ROOT_ID"
+    value: "4fe77513a8a6c49b"
+  - name: "XML"
+    value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<root><subject>CAF Test\
+      \ Extract - simple</subject><from>Admin/hpq%HPQ@hpswlabs.hp.com</from><to>Admin/hpq%hpq@hpswlabs.hp.com</to><CONTENT><email><hash\
+      \ name=\"Normalized\"><config><fields><field name=\"To\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"From\" normalizationType=\"NAME_ONLY\" /><field\
+      \ name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest\
+      \ function=\"XXHASH64\" value=\"49b15c8ef630cd1a\" /></hash><headers><From>From:\
+      \ Alexey Q &lt;xxx@hotmail.com&gt;</From>\r\n<Sent dateUtc=\"2012-04-02T13:47:37Z\"\
+      >Sent: Mon, 2 Apr 2012 21:47:37 +0800</Sent>\r\n<To>To: &lt;bob@xxx.mailgun.org&gt;</To>\r\
+      \n<Subject>Subject: RE: Test</Subject>\r\n</headers><body>\r\n\r\nHello\r\n\r\
+      \n&gt; Subject: Test\r\n</body></email><email><hash name=\"Normalized\"><config><fields><field\
+      \ name=\"To\" normalizationType=\"NAME_ONLY\" /><field name=\"From\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\"\
+      \ /></fields></config><digest function=\"XXHASH64\" value=\"4fe77513a8a6c49b\"\
+      \ /></hash><headers><From>&gt; From: bob@xxx.mailgun.org</From>\r\n<To>&gt;\
+      \ To: xxx@gmail.com; xxx@hotmail.com; xxx@yahoo.com; xxx@aol.com; xxx@comcast.net;\
+      \ xxx@nyc.rr.com</To>\r\n<Date dateUtc=\"2012-04-02T13:44:22Z\">&gt; Date: Mon,\
+      \ 2 Apr 2012 17:44:22 +0400</Date>\r\n</headers><body>&gt;\r\n&gt; Hi</body></email></CONTENT><sent>Thu,\
+      \ 19 Nov 2015 09:25:21 +0000</sent></root>\r\n"
+  status: "COMPLETED"

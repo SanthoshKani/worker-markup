@@ -1,0 +1,93 @@
+---
+tag: "CAF_11028/mixed_yahoo.txt"
+testCaseInformation:
+  associatedTickets: "CAF-2665"
+  comments: "CAF_11028/mixed_yahoo.txt"
+  description: "Markup Worker support for Yahoo! Mail"
+  testCaseId: "CAF_11028"
+inputData:
+  containerId: null
+  email: true
+  hashConfiguration:
+  - fields:
+    - name: "To"
+      normalizationType: "NAME_ONLY"
+    - name: "From"
+      normalizationType: "NAME_ONLY"
+    - name: "Body"
+      normalizationType: "REMOVE_WHITESPACE_AND_LINKS"
+    hashFunctions:
+    - "XXHASH64"
+    name: "Normalized"
+    scope: "EMAIL_SPECIFIC"
+  inputFile: "CAF_11028/mixed_yahoo.txt"
+  outputFieldList:
+  - field: "SECTION_SORT"
+    xPathExpression: "/root/email[1]/headers/Sent/@dateUtc"
+  - field: "SECTION_ID"
+    xPathExpression: "/root/email[1]/hash/digest/@value"
+  - field: "PARENT_ID"
+    xPathExpression: "/root/email[2]/hash/digest/@value"
+  - field: "ROOT_ID"
+    xPathExpression: "/root/email[last()]/hash/digest/@value"
+  - field: "XML"
+    xPathExpression: "."
+  sourceData:
+    subject:
+    - "CAF Test Extract - simple"
+    from:
+    - "Admin/hpq%HPQ@hpswlabs.hp.com"
+    to:
+    - "Admin/hpq%hpq@hpswlabs.hp.com"
+    sent:
+    - "Thu, 19 Nov 2015 09:25:21 +0000"
+  storageReference: null
+  useDataStore: false
+expectedOutputData:
+  comparisonType: "TEXT"
+  expectedContentFile: null
+  expectedSimilarityPercentage: 0
+  fieldList:
+  - name: "SECTION_SORT"
+    value: "2016-02-05T16:01:04Z"
+  - name: "SECTION_ID"
+    value: "52947c462b7bec7"
+  - name: "PARENT_ID"
+    value: "87d73881cbe04bda"
+  - name: "ROOT_ID"
+    value: "87d73881cbe04bda"
+  - name: "XML"
+    value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<root><subject>CAF Test\
+      \ Extract - simple</subject><from>Admin/hpq%HPQ@hpswlabs.hp.com</from><to>Admin/hpq%hpq@hpswlabs.hp.com</to><CONTENT><email><hash\
+      \ name=\"Normalized\"><config><fields><field name=\"To\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"From\" normalizationType=\"NAME_ONLY\" /><field\
+      \ name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest\
+      \ function=\"XXHASH64\" value=\"52947c462b7bec7\" /></hash><headers><From>From:\
+      \ Pavlov, Edward</From>\r\n<Sent dateUtc=\"2016-02-05T16:01:04Z\">Sent: Fri\
+      \ Feb 5 16:01:04 2016</Sent>\r\n<To>To: Paley, Mikhail</To>\r\n<Cc>Cc: ASPEn\
+      \ Dev Core; Albert, Jason</Cc>\r\n<Subject>Subject: Re: Marathon Deployment</Subject>\r\
+      \n<Importance>Importance: Normal</Importance>\r\n</headers><body>\r\nMikhail,\
+      \ \r\nCan you add the db initialization to initpolicydb.sh script\r\n\r\n</body></email><email><hash\
+      \ name=\"Normalized\"><config><fields><field name=\"To\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"From\" normalizationType=\"NAME_ONLY\" /><field\
+      \ name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest\
+      \ function=\"XXHASH64\" value=\"87d73881cbe04bda\" /></hash><headers>On <Sent\
+      \ dateUtc=\"2016-02-04T17:27:00Z\">Feb 4, 2016, at 5:27 PM</Sent>,<From> Paley,\
+      \ Mikhail &lt;mikhail.paley@hpe.com&gt; </From>wrote:\r\n</headers><body>\r\n\
+      Please, note that I have added two new containers in Aspen Deploy: boilerplate\
+      \ and boilerplate-administration.\r\nNOTE: In order for them to start correctly,\
+      \ new DB schema should be installed. For instructions refer to ASP -1615.\r\n\
+      Also NOTE that you can exclude these containers from deployment,  just specify\
+      \ additional    –x “boilerplate”  when start deploy-workers.sh\r\n         \
+      \                 Regards, MIkhail\r\n \r\nP.S.\r\nHere the instructions for\
+      \ your convenience:\r\n \r\n \r\nRe-name and run  attached JAR with next arguments:\r\
+      \n(Replace 00.000.00.000 with host IP where Postgres is installed, update password\
+      \ if required )\r\n$ java -jar boilerplate-db-1.0-jar-with-dependencies.jar\
+      \ -db.connection jdbc:postgresql://00.000.00.000:5432 -db.name boilerplate -db.pass\
+      \ redacted -db.user redacted\r\nostgres -fd\r\n \r\nIn command prompt you should\
+      \ see: \r\n \r\nabout to perform DB installation from scratch.\r\nCreated new\
+      \ database: boilerplate\r\nAbout to perform DB update.\r\nDB update finished.\r\
+      \n \r\nCheck that \"boilerplate\" DB actually exist\r\n \r\n \r\n \r\n \r\n\
+      &lt;boilerplate-db-1.0-jar-with-dependencies.jar.rename&gt;\r\n\r\n</body></email></CONTENT><sent>Thu,\
+      \ 19 Nov 2015 09:25:21 +0000</sent></root>\r\n"
+  status: "COMPLETED"

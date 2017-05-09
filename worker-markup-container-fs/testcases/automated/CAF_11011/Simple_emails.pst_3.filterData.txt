@@ -1,0 +1,22 @@
+From: Crooks, Philip
+Sent: Fri Nov 27 11:07:55 2015
+To: Bryson, Michael
+Cc: Ploch, Krzysztof
+Subject: worker-extract
+Importance: Normal
+ 
+OK, I changed my mind again and put this up on Artifactory anyway, since who knows when I’m going to get to the bottom of the PST thing.
+ 
+rh7-artifactory.hpswlabs.hp.com:8443/caf/worker-extract:3.1-SNAPSHOT
+ 
+ 
+Philip Crooks
+Software Engineer
+
++44 3305872143  Office
+
+Belfast, UK
+hpe.com
+
+
+

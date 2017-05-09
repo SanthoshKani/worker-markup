@@ -1,0 +1,112 @@
+---
+tag: "MultipleDateFormats.txt"
+testCaseInformation:
+  associatedTickets: null
+  comments: "MultipleDateFormats.txt"
+  description: null
+  testCaseId: "MultipleDateFormats.txt"
+inputData:
+  containerId: null
+  email: true
+  hashConfiguration:
+  - fields:
+    - name: "To"
+      normalizationType: "NAME_ONLY"
+    - name: "From"
+      normalizationType: "NAME_ONLY"
+    - name: "Body"
+      normalizationType: "REMOVE_WHITESPACE_AND_LINKS"
+    hashFunctions:
+    - "XXHASH64"
+    name: "Normalized"
+    scope: "EMAIL_SPECIFIC"
+  inputFile: "MultipleDateFormats.txt"
+  outputFieldList:
+  - field: "SECTION_SORT"
+    xPathExpression: "/root/email[1]/headers/Sent/@dateUtc"
+  - field: "SECTION_ID"
+    xPathExpression: "/root/email[1]/hash/digest/@value"
+  - field: "PARENT_ID"
+    xPathExpression: "/root/email[2]/hash/digest/@value"
+  - field: "ROOT_ID"
+    xPathExpression: "/root/email[last()]/hash/digest/@value"
+  - field: "XML"
+    xPathExpression: "."
+  sourceData:
+    subject:
+    - "CAF Test Extract - simple"
+    from:
+    - "Admin/hpq%HPQ@hpswlabs.hp.com"
+    to:
+    - "Admin/hpq%hpq@hpswlabs.hp.com"
+    sent:
+    - "Thu, 19 Nov 2015 09:25:21 +0000"
+  storageReference: null
+  useDataStore: false
+expectedOutputData:
+  comparisonType: "TEXT"
+  expectedContentFile: null
+  expectedSimilarityPercentage: 0
+  fieldList:
+  - name: "SECTION_SORT"
+    value: "2016-09-27T12:34:16Z"
+  - name: "SECTION_ID"
+    value: "81d45ede3e0fde7a"
+  - name: "PARENT_ID"
+    value: "383775908bd9ef4a"
+  - name: "ROOT_ID"
+    value: "969b26c06e65c4e9"
+  - name: "XML"
+    value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<root><subject>CAF Test\
+      \ Extract - simple</subject><from>Admin/hpq%HPQ@hpswlabs.hp.com</from><to>Admin/hpq%hpq@hpswlabs.hp.com</to><CONTENT><email><hash\
+      \ name=\"Normalized\"><config><fields><field name=\"To\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"From\" normalizationType=\"NAME_ONLY\" /><field\
+      \ name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest\
+      \ function=\"XXHASH64\" value=\"81d45ede3e0fde7a\" /></hash><headers><From>From:\
+      \ Adam Rogan</From>\r\n<Sent dateUtc=\"2016-09-27T12:34:16Z\">Sent: Tue Sep\
+      \ 27 12:34:16 2016</Sent>\r\n<To>To: McKeown, Zara</To>\r\n<Subject>Subject:\
+      \ Fwd: From a mixture of email clients</Subject>\r\n<Importance>Importance:\
+      \ Normal</Importance>\r\n</headers><body>\r\n\r\n\r\nSent from my iPhone\r\n\
+      \r\nBegin forwarded message:\r\n\r\n</body></email><email><hash name=\"Normalized\"\
+      ><config><fields><field name=\"To\" normalizationType=\"NAME_ONLY\" /><field\
+      \ name=\"From\" normalizationType=\"NAME_ONLY\" /><field name=\"Body\" normalizationType=\"\
+      REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest function=\"XXHASH64\"\
+      \ value=\"383775908bd9ef4a\" /></hash><headers><From>From: \"Rogan, Adam Pau\"\
+      \ &lt;adam.pau.rogan@hpe.com&gt;</From>\r\n<Sent dateUtc=\"2016-09-27T12:33:04Z\"\
+      >Sent: 27 September 2016 at 12:33:04 BST</Sent>\r\n<To>To: \"arogan@redactedemail.com\"\
+      \ &lt;arogan@redactedemail.com&gt;</To>\r\n<Subject>Subject: FW: FW: From a\
+      \ mixture of email clients</Subject>\r\n</headers><body>\r\n \r\n \r\n</body></email><email><hash\
+      \ name=\"Normalized\"><config><fields><field name=\"To\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"From\" normalizationType=\"NAME_ONLY\" /><field\
+      \ name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest\
+      \ function=\"XXHASH64\" value=\"16f0f0b6ab94e2b9\" /></hash><headers><From>From:\
+      \ McKeown, Zara </From>\r\n<Sent dateUtc=\"2016-09-27T12:32:00Z\">Sent: 27 September\
+      \ 2016 12:32</Sent>\r\n<To>To: Rogan, Adam Pau &lt;adam.pau.rogan@hpe.com&gt;</To>\r\
+      \n<Subject>Subject: Re: FW: From a mixture of email clients</Subject>\r\n</headers><body>\r\
+      \n;!2£4545 @#][\r\n\\Z\\ | ~~  ]]\r\n\r\n\r\n[[[{}{}{}{\r\n\r\n\r\n\"£&amp;*()(*&amp;^%$£\
+      %^&amp;*()_(*&amp;£\"+¬````\r\n\r\n\r\n``|\r\n\r\n</body></email><email><hash\
+      \ name=\"Normalized\"><config><fields><field name=\"To\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"From\" normalizationType=\"NAME_ONLY\" /><field\
+      \ name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest\
+      \ function=\"XXHASH64\" value=\"ca17a060c9e2ff28\" /></hash><headers><From>From:\
+      \ Za M &lt;zara12345@redactedemail.com&gt;</From>\r\n<Sent dateUtc=\"2016-09-27T12:30:24Z\"\
+      >Sent: 27 September 2016 12:30:24</Sent>\r\n<To>To: McKeown, Zara</To>\r\n<Subject>Subject:\
+      \ Re: FW: From a mixture of email clients </Subject>\r\n</headers><body> \r\n\
+      Thank you!\r\n \r\n</body></email><email><hash name=\"Normalized\"><config><fields><field\
+      \ name=\"To\" normalizationType=\"NAME_ONLY\" /><field name=\"From\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\"\
+      \ /></fields></config><digest function=\"XXHASH64\" value=\"a1425efb02868dfd\"\
+      \ /></hash><headers><From>From: Rogan, Adam Pau </From>\r\n<Sent dateUtc=\"\
+      2016-10-07T12:21:00Z\">Sent: Fri, Oct 7, 2016 at 8:21 AM -0400</Sent>\r\n<To>To:\
+      \ McKeown, Zara &lt;zara.mckeown@hpe.com&gt;</To>\r\n<Subject>Subject: RE: From\
+      \ a mixture of email clients</Subject>\r\n</headers><body> \r\nHi back\r\n \r\
+      \n</body></email><email><hash name=\"Normalized\"><config><fields><field name=\"\
+      To\" normalizationType=\"NAME_ONLY\" /><field name=\"From\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\"\
+      \ /></fields></config><digest function=\"XXHASH64\" value=\"969b26c06e65c4e9\"\
+      \ /></hash><headers><From>From: McKeown, Zara </From>\r\n<Sent dateUtc=\"2016-09-27T12:20:00Z\"\
+      >Sent: 27 September 2016 12:20</Sent>\r\n<To>To: Rogan, Adam Pau &lt;adam.pau.rogan@hpe.com&gt;</To>\r\
+      \n<Subject>Subject: From a mixture of email clients</Subject>\r\n</headers><body>\
+      \ \r\nHi\r\n</body></email></CONTENT><sent>Thu, 19 Nov 2015 09:25:21 +0000</sent></root>\r\
+      \n"
+  status: "COMPLETED"

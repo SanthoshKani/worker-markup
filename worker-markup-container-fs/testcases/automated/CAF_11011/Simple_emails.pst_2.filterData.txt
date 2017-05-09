@@ -1,0 +1,10 @@
+From: Ploch, Krzysztof
+Sent: Thu Nov 26 20:00:03 2015
+To: Bryson, Michael
+Subject: Testing
+Importance: Normal
+ 
+Hi Michael,
+ 
+Both speech and ocr (including test data) are in your shared folder. Speech 1.1-SNAPSHOT is pushed to artifactory as well. You just need to repeat the steps we did for OCR.
+You should also have a look at xml and content files for speech to validate them.

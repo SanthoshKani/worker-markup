@@ -1,0 +1,19 @@
+From: Bryson, Michael
+Sent: Mon Feb 29 08:37:00 2016
+To: Bryson, Michael
+Subject: Email with attached email
+Importance: Normal
+Attachments: Extract worker and msg attachments
+
+An email from Michael McAlynn is attached to this email
+ 
+Michael Bryson
+QA Engineer
+Software Engineering
+Big Data
+
+Belfast, N. Ireland
+michael.bryson@hpe.com
+
+
+ 

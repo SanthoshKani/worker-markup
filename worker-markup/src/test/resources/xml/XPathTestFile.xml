@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright 2015-2017 Hewlett Packard Enterprise Development LP.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<root><CAF_MAIL_CONVERSATION_INDEX>Ac3pCr/g148OQoCCQSCy8dDjwH7QBwAAzLowAAARRGA=</CAF_MAIL_CONVERSATION_INDEX><CAF_MAIL_CONVERSATION_INDEX_PARSED>{"headerDate":"2013-01-02T17:01:04.168Z","guid":"d78f0e42-8082-4120-b2f1-d0e3c07ed007","childMessages":[{"messageDate":"2013-01-02T17:23:58.064Z","randomNo":3,"sequenceCount":0},{"messageDate":"2013-01-02T17:25:53.931Z","randomNo":6,"sequenceCount":0}]}</CAF_MAIL_CONVERSATION_INDEX_PARSED><CONTENT><email><hash><config><fields><field><name>to</name><normalizationType>NONE</normalizationType></field><field><name>body</name><normalizationType>REMOVE_WHITESPACE</normalizationType></field></fields></config><digest function="XXHASH64" value="a4e7fa8100f5f6fb" /></hash><headers><From>From: Paul, Navamoni</From>
+    <Sent>Sent: 20 July 2016 17:51</Sent>
+    <To>To: Reid, Andy &amp;lt;andrew.reid@hpe.com&amp;gt;; Hardy, Dermot &amp;lt;dermot.hardy@hpe.com&amp;gt;</To>
+    <Cc>Cc: Ploch, Krzysztof &amp;lt;krzysztof.ploch@hpe.com&amp;gt;</Cc>
+    <Subject>Subject: RE: iSTF - CAF Integration</Subject>
+</headers><body>
+    Hi Navamoni,
+
+    Is this ready yet?
+
+    Thanks,
+    Andy
+</body></email><email><hash><config><fields><field><name>to</name><normalizationType>NONE</normalizationType></field><field><name>body</name><normalizationType>REMOVE_WHITESPACE</normalizationType></field></fields></config><digest function="XXHASH64" value="f5aaaeca8206aa23" /></hash><headers><From>From: Paul, Navamoni</From>
+    <Sent>Sent: 20 July 2016 17:51</Sent>
+    <To>To: Reid, Andy &amp;lt;andrew.reid@hpe.com&amp;gt;; Hardy, Dermot &amp;lt;dermot.hardy@hpe.com&amp;gt;</To>
+    <Cc>Cc: Ploch, Krzysztof &amp;lt;krzysztof.ploch@hpe.com&amp;gt;</Cc>
+    <Subject>Subject: RE: iSTF - CAF Integration</Subject>
+</headers><body>
+    Hi Andy, Dermot,
+
+    Will make sure, that that details are available by tomorrow and if required we can go through having regular synchups, to identify and address issues as required.
+
+    Regards,
+    Navamoni
+</body></email><email><hash><config><fields><field><name>to</name><normalizationType>NONE</normalizationType></field><field><name>body</name><normalizationType>REMOVE_WHITESPACE</normalizationType></field></fields></config><digest function="XXHASH64" value="6c86d7d70c3d14f8" /></hash><headers><From>From: Reid, Andy</From>
+    <Sent>Sent: Tuesday, July 19, 2016 6:49 PM</Sent>
+    <To>To: Paul, Navamoni &amp;lt;paul.navamoni@hpe.com&amp;gt;; Hardy, Dermot &amp;lt;dermot.hardy@hpe.com&amp;gt;</To>
+    <Cc>Cc: Ploch, Krzysztof &amp;lt;krzysztof.ploch@hpe.com&amp;gt;</Cc>
+    <Subject>Subject: iSTF - CAF Integration</Subject>
+</headers><body>
+    Hi Navamoni,
+
+    Dermot will be working on this over the few days could you forward the details he will need?
+
+    Thanks,
+    Andy
+</body></email></CONTENT></root>

@@ -1,0 +1,6 @@
+Sent: 
+Cc: McCloskey, Karen
+Subject: To field is blank
+Importance: Normal
+
+But CC field has  value

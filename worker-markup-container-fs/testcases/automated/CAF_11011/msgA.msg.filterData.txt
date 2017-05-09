@@ -1,0 +1,11 @@
+From: Crooks, Philip
+Sent: Fri Apr 29 08:23:36 2016
+To: Crooks, Philip
+Subject: This is the subject of msgA
+Importance: Normal
+Attachments: docA.docx; This is the subject of msgB
+
+This is msgA.
+It has an attached document docA.
+It also has an attached message msgB.
+ 

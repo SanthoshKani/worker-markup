@@ -1,0 +1,53 @@
+---
+sourceData:
+  subject:
+  - reference: null
+    data: Q0FGIFRlc3QgRXh0cmFjdCAtIHNpbXBsZQ==
+  from:
+  - reference: null
+    data: QWRtaW4vaHBxJUhQUUBocHN3bGFicy5ocC5jb20=
+  to:
+  - reference: null
+    data: QWRtaW4vaHBxJWhwcUBocHN3bGFicy5ocC5jb20=
+  sent:
+  - reference: null
+    data: VGh1LCAxOSBOb3YgMjAxNSAwOToyNToyMSArMDAwMA==
+  conversationtopic:
+  - reference: null
+    data: Q0FGIFJlbGVhc2UgUHJvY2Vzcw==
+  internetmessageid:
+  - reference: null
+    data: PENTMVBSODRNQjAyNzg3MjQ0QTI5RDY2NzIyRUNEQUYyMTlBNEEwQENTMVBSODRNQjAyNzguTkFNUFJEODQuUFJPRC5PVVRMT09LLkNPTT4=
+  caf-mail-in-reply-to:
+  - reference: null
+    data: PERGNFBSODRNQjAwOTA2QkMwNERDQzYxNEZGNkMxRkNFOUVDNEEwQERGNFBSODRNQjAwOTAuTkFNUFJEODQuUFJPRC5PVVRMT09LLkNPTT4=
+  caf-mail-conversation-index:
+  - reference: null
+    data: QWMzcENyL2cxNDhPUW9DQ1FTQ3k4ZERqd0g3UUJ3QUF6TG93QUFBUlJHQT0=
+hashConfiguration:
+- name: "Normalized"
+  scope: "EMAIL_SPECIFIC"
+  fields:
+  - name: "to"
+    normalizationType: "NONE"
+  - name: "body"
+    normalizationType: "REMOVE_WHITESPACE"
+  hashFunctions:
+  - "XXHASH64"
+- name: "Variant"
+  scope: "EMAIL_THREAD"
+  fields:
+  - name: "cc"
+    normalizationType: "NONE"
+  - name: "subject"
+    normalizationType: "NONE"
+  - name: "sent"
+    normalizationType: "REMOVE_WHITESPACE"
+  hashFunctions:
+  - "XXHASH64"
+outputFields:
+- field: "XML"
+  xPathExpression: "."
+- field: "ALL_TO"
+  xPathExpression: "//To"
+isEmail: true

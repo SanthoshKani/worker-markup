@@ -1,0 +1,146 @@
+---
+tag: "CAF_11029/Hotmail_test2.txt"
+testCaseInformation:
+  associatedTickets: "CAF-2665"
+  comments: "CAF_11029/Hotmail_test2.txt"
+  description: "Markup Worker support for Hotmail"
+  testCaseId: "CAF_11029"
+inputData:
+  containerId: null
+  email: true
+  hashConfiguration:
+  - fields:
+    - name: "To"
+      normalizationType: "NAME_ONLY"
+    - name: "From"
+      normalizationType: "NAME_ONLY"
+    - name: "Body"
+      normalizationType: "REMOVE_WHITESPACE_AND_LINKS"
+    hashFunctions:
+    - "XXHASH64"
+    name: "Normalized"
+    scope: "EMAIL_SPECIFIC"
+  inputFile: "CAF_11029/Hotmail_test2.txt"
+  outputFieldList:
+  - field: "SECTION_SORT"
+    xPathExpression: "/root/email[1]/headers/Sent/@dateUtc"
+  - field: "SECTION_ID"
+    xPathExpression: "/root/email[1]/hash/digest/@value"
+  - field: "PARENT_ID"
+    xPathExpression: "/root/email[2]/hash/digest/@value"
+  - field: "ROOT_ID"
+    xPathExpression: "/root/email[last()]/hash/digest/@value"
+  - field: "XML"
+    xPathExpression: "."
+  sourceData:
+    subject:
+    - "CAF Test Extract - simple"
+    from:
+    - "Admin/hpq%HPQ@hpswlabs.hp.com"
+    to:
+    - "Admin/hpq%hpq@hpswlabs.hp.com"
+    sent:
+    - "Thu, 19 Nov 2015 09:25:21 +0000"
+  storageReference: null
+  useDataStore: false
+expectedOutputData:
+  comparisonType: "TEXT"
+  expectedContentFile: null
+  expectedSimilarityPercentage: 0
+  fieldList:
+  - name: "SECTION_SORT"
+    value: "2016-11-25T10:52:09Z"
+  - name: "SECTION_ID"
+    value: "fd5a215ed3aa801c"
+  - name: "PARENT_ID"
+    value: "4842a63cf6f621d2"
+  - name: "ROOT_ID"
+    value: "c13381aa266665d3"
+  - name: "XML"
+    value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<root><subject>CAF Test\
+      \ Extract - simple</subject><from>Admin/hpq%HPQ@hpswlabs.hp.com</from><to>Admin/hpq%hpq@hpswlabs.hp.com</to><CONTENT><email><hash\
+      \ name=\"Normalized\"><config><fields><field name=\"To\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"From\" normalizationType=\"NAME_ONLY\" /><field\
+      \ name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest\
+      \ function=\"XXHASH64\" value=\"fd5a215ed3aa801c\" /></hash><headers><From>From:\
+      \ Kersnick, Tom</From>\r\n<Sent dateUtc=\"2016-11-25T10:52:09Z\">Sent: Fri Nov\
+      \ 25 10:52:09 2016</Sent>\r\n<To>To: Devarajulu, Mohanasundaram; Stangel, Dan</To>\r\
+      \n<Cc>Cc: Beldin, Rick (Rick); openvpn.community@lists.com</Cc>\r\n<Subject>Subject:\
+      \ Re: Had to reimage my ubuntu workstation.....</Subject>\r\n<Importance>Importance:\
+      \ Normal</Importance>\r\n</headers><body>\r\nBy chance was the \"green light\"\
+      \ ever provided for the move out of hp.com to hpe.com domain?  Appreciate the\
+      \ help here.\r\n\r\n/tom\r\n \r\n-- \r\nTom Kersnick\r\nStrategist and Solutions\r\
+      \nEG Quality Strategy and Analytics\r\n+1.415.905.0408\r\n\r\n</body></email><email><hash\
+      \ name=\"Normalized\"><config><fields><field name=\"To\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"From\" normalizationType=\"NAME_ONLY\" /><field\
+      \ name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest\
+      \ function=\"XXHASH64\" value=\"4842a63cf6f621d2\" /></hash><headers>On <Sent\
+      \ dateUtc=\"2016-10-04T16:30:00Z\">10/4/16, 4:30 PM</Sent>,<From> \"openvpn.community-request@lists.com\
+      \ on behalf of Devarajulu, Mohanasundaram\" &lt;openvpn.community-request@lists.com\
+      \ on behalf of mohanasundaram.devarajulu@hpe.com&gt; </From>wrote:\r\n</headers><body>\r\
+      \n    Thanks Dan,\r\n    \r\n    Hope we take action soon to move out of hp.com\
+      \ to hpe.com domain. This\r\n    may stop working on Oct 31 or some day. Who\
+      \ are the OpenVPM admins?\r\n    \r\n    Thanks\r\n    Mohan\r\n    \r\n   \
+      \ \r\n    \r\n</body></email><email><hash name=\"Normalized\"><config><fields><field\
+      \ name=\"To\" normalizationType=\"NAME_ONLY\" /><field name=\"From\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\"\
+      \ /></fields></config><digest function=\"XXHASH64\" value=\"4e0125e901f67a10\"\
+      \ /></hash><headers>    On <Sent dateUtc=\"2016-10-03T15:45:00Z\">Mon, 2016-10-03\
+      \ at 09:45 -0600</Sent>,<From> Stangel, Dan </From>wrote:\r\n</headers><body>\
+      \    &gt; Mohan,\r\n    &gt; \r\n    &gt; We have not yet migrated the osprey.fc.hp.com\
+      \ systems.  These can be moved at any time to osprey.ftc.hpecorp.net but I need\
+      \ the \"green light\" from the OpenVPN admins to do so -- earlier in the year\
+      \ we decided to wait.\r\n    &gt; \r\n    &gt; As for osprey.linux.hp.com, these\
+      \ also remain intact, but there are new hosts osprey.osp.hpe.com that are set\
+      \ up in DNS.  They don't appear to respond to any ping or SSH attempts.\r\n\
+      \    &gt; \r\n    &gt; \r\n    &gt; Dan Stangel\r\n    &gt; Hewlett Packard\
+      \ Enterprise Open Source Program Office\r\n    &gt; \r\n</body></email><divider>\
+      \    &gt; -----Original Message-----\r\n</divider><email><hash name=\"Normalized\"\
+      ><config><fields><field name=\"To\" normalizationType=\"NAME_ONLY\" /><field\
+      \ name=\"From\" normalizationType=\"NAME_ONLY\" /><field name=\"Body\" normalizationType=\"\
+      REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest function=\"XXHASH64\"\
+      \ value=\"6db02710ed716096\" /></hash><headers><From>    &gt; From: openvpn.community-request@lists.com\
+      \ [mailto:openvpn.community-request@lists.com] On Behalf Of Devarajulu, Mohanasundaram</From>\r\
+      \n<Sent dateUtc=\"2016-10-03T08:25:00Z\">    &gt; Sent: Monday, October 03,\
+      \ 2016 8:25 AM</Sent>\r\n<To>    &gt; To: Beldin, Rick (Rick) &lt;rick.beldin@hpe.com&gt;</To>\r\
+      \n<Cc>    &gt; Cc: openvpn.community@lists.com</Cc>\r\n<Subject>    &gt; Subject:\
+      \ Re: Had to reimage my ubuntu workstation.....</Subject>\r\n</headers><body>\
+      \    &gt; \r\n    &gt; Looks like we need to find the equivalents for the following\
+      \ hp.com servers and replace them at https://hpedia.com\r\n    &gt; osprey.linux.hp.com\r\
+      \n    &gt; osprey.linux.hp.com\r\n    &gt; https://auto.com\r\n    &gt; https://remote.com\r\
+      \n    &gt; intranet.hp.com\r\n    &gt; http://itsupport.hp.com/portal/site/sg/documentdetail?docid=KM028832\r\
+      \n    &gt; vwpc.austin.hp.com\r\n    &gt; \r\n    &gt; I do not know the new\
+      \ servers and looking for them. If some one has please do replace.\r\n    &gt;\
+      \ \r\n    &gt; Regards\r\n    &gt; Mohan\r\n    &gt; \r\n    &gt; \r\n</body></email><email><hash\
+      \ name=\"Normalized\"><config><fields><field name=\"To\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"From\" normalizationType=\"NAME_ONLY\" /><field\
+      \ name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest\
+      \ function=\"XXHASH64\" value=\"1b429fbbc0dcfda6\" /></hash><headers>    &gt;\
+      \ On <Sent dateUtc=\"2016-10-03T12:36:00Z\">Mon, 2016-10-03 at 08:36 -0400</Sent>,<From>\
+      \ Rick Beldin </From>wrote:\r\n</headers><body>    &gt; &gt; This tends to be\
+      \ the most up-to-date resource for information:\r\n    &gt; &gt; \r\n    &gt;\
+      \ &gt; https://hpedia.com\r\n    &gt; &gt; \r\n    &gt; &gt; If you find something\
+      \ different,  please update the wiki.\r\n    &gt; &gt; \r\n    &gt; &gt; I use\
+      \ both openvpn on 16.04 as well as openconnect with the juniper \r\n    &gt;\
+      \ &gt; gateways:\r\n    &gt; &gt; \r\n    &gt; &gt; https://hpedia.com\r\n \
+      \   &gt; &gt; \r\n    &gt; &gt; I find openconnect to have somewhat better latency\
+      \ but it does seem \r\n    &gt; &gt; susceptible to 'noise' that causes connections\
+      \ to occasionally drop.\r\n    &gt; &gt; \r\n    &gt; &gt; Rick\r\n    &gt;\
+      \ &gt; \r\n    &gt; &gt; \r\n    &gt; &gt; \r\n</body></email><email><hash name=\"\
+      Normalized\"><config><fields><field name=\"To\" normalizationType=\"NAME_ONLY\"\
+      \ /><field name=\"From\" normalizationType=\"NAME_ONLY\" /><field name=\"Body\"\
+      \ normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest\
+      \ function=\"XXHASH64\" value=\"c13381aa266665d3\" /></hash><headers>    &gt;\
+      \ &gt; On <Sent dateUtc=\"2016-10-02T17:07:00Z\">10/02/2016 05:07 PM</Sent>,<From>\
+      \ Lee, Benson </From>wrote:\r\n</headers><body>    &gt; &gt; &gt; Mike,\r\n\
+      \    &gt; &gt; &gt; \r\n    &gt; &gt; &gt;  \r\n    &gt; &gt; &gt; \r\n    &gt;\
+      \ &gt; &gt; Which certificate are you referring to?  Is this the Class B digital\
+      \ \r\n    &gt; &gt; &gt; badge certificate or is it the SSL Certificate used\
+      \ for servers?  \r\n    &gt; &gt; &gt; Both have been migrated to http://mydigi.com/\
+      \ now.\r\n    &gt; &gt; &gt; \r\n    &gt; &gt; &gt;  \r\n    &gt; &gt; &gt;\
+      \ \r\n    &gt; &gt; &gt; Thank you!\r\n    &gt; &gt; &gt; \r\n    &gt; &gt;\
+      \ &gt;  \r\n    &gt; &gt; &gt; \r\n    &gt; &gt; &gt; Benson\r\n    &gt; &gt;\
+      \ &gt; \r\n    &gt; &gt; &gt;  \r\n    &gt; &gt; &gt;\r\n    &gt; &gt; \r\n\
+      \    &gt; \r\n    &gt; \r\n    \r\n    \r\n    \r\n\r\n</body></email></CONTENT><sent>Thu,\
+      \ 19 Nov 2015 09:25:21 +0000</sent></root>\r\n"
+  status: "COMPLETED"

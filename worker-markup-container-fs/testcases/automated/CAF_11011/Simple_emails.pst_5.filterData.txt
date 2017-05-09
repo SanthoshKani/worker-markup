@@ -1,0 +1,9 @@
+From: McVeigh, Anthony
+Sent: Wed Nov 25 14:25:45 2015
+To: McVeigh, Anthony; Bryson, Michael
+Subject: AutoDeploy Has Completed
+Importance: Normal
+ 
+AUTODEPLOY HAS COMPLETED!
+UFT TEST RUN HAS BEGUN.
+ 

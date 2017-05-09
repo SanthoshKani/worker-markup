@@ -1,0 +1,17 @@
+Sent: 
+Subject: Email with attached word document with embedded media
+Importance: Normal
+Attachments: WordEmbeddedImageAudioVideo.docx
+
+Attached word document has embedded image, audio and video
+ 
+Michael Bryson
+QA Engineer
+Software Engineering
+Big Data
+
+Belfast, N. Ireland
+michael.bryson@hpe.com
+
+
+ 

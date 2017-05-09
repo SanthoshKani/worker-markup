@@ -1,0 +1,21 @@
+From: Payne, Alastair
+Sent: Thu Nov 12 11:52:14 2015
+To: G M, Bharath Krishna; SHETTY, PRATHEEKSHA; Narasimhan, Gita; Hunter, Ashley Glenn
+Cc: McCloskey, Karen
+Subject: Facets not displaying properly on List View 2
+Importance: Normal
+Attachments: image.png
+
+Hi guys,
+ 
+This is currently how the facet panel looks on dev_preview for List View 2:
+ 
+
+ 
+Please let either myself or Karen know if you believe this is related to changes you have made recently.
+ 
+Thanks,
+Alastair
+ 
+Alastair Payne |  Software Developer  |  HP Big Data Solutions | alastair.stu.payne@hp.com
+ 

@@ -1,0 +1,58 @@
+From: Martinez, Mauricio
+Sent: Wed Nov 30 05:22:23 2016
+To: Dyer, Daniel; openvpn.community@lists.com
+Subject: Re: FW: [openvpn.announce] Migration of osprey gateway
+Importance: Normal
+Attachments: unknown-M2IDRY
+
+This is the information. 
+
+
+
+
+
+-- 
+
+-------
+SALUDOS
+Mauricio Martínez Garcia
+ES SW CMS MngSolSrv
+IT Consultant - HP Enterprise Business México.
++00 (00) 0000 0000 office |Lync redacted | Skype redacted| mauricio.martinez@hpe.com
+Prolongación Reforma 700 | Lomas de Santa Fe  |  01210  México DF | Mexico www.hpe.com
+Let´s Do Amazing
+
+
+
+
+-----Mensaje original-----
+De: "Dyer, Daniel" <dan.dyer@hpe.com>
+Reply-to: "Dyer, Daniel" <dan.dyer@hpe.com>
+Para: openvpn.community@lists.com <openvpn.community@lists.com>
+Cc: "Dyer, Daniel" <dan.dyer@hpe.com>
+Asunto: FW: [openvpn.announce] Migration of osprey gateway
+Fecha: Wed, 30 Nov 2016 03:23:10 +0000
+
+What is the full DNS name of the gateway we should be using?
+ 
+Thanks,
+Dan
+ 
+From: <openvpn.announce-request@lists.com> on behalf of "Carson, Kevin (SSA SDS, Virtualization)" <kevin.carson@hpe.com>
+Reply-To: "Carson, Kevin (SSA SDS, Virtualization)" <kevin.carson@hpe.com>
+Date: Monday, November 28, 2016 at 10:37 AM
+To: "openvpn.announce@lists.com" <openvpn.announce@lists.com>
+Subject: [openvpn.announce] Migration of osprey gateway
+ 
+You are receiving this message as a member of the OpenVPN user community which is an Open Source Profession sponsored project.
+
+Action May Be Required
+
+The OpenVPN project is continuing with HPE. As such, the DNS names associated with the gateways need to be changed along with outstanding software environment updates.
+
+Changes will be effected to the osprey gateway first starting November 29, 2016. All users should be connecting to osprey before this time or they will experience connectivity issues. After the changes have been applied, a new announcement will be sent out for users to resume using the osprey gateway.
+
+Please direct any questions/discussion to the openvpn community mailing list -- openvpn.community@lists.com<mailto:openvpn.community@lists.com>
+
+The OpenVPN administrators.
+

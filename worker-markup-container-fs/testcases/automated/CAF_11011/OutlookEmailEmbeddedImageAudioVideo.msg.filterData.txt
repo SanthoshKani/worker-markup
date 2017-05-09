@@ -1,0 +1,30 @@
+Sent: 
+Subject: Email with embedded test, image, audio and video
+Importance: Normal
+Attachments: image.jpg
+
+Email with embedded image, audio and video:
+ 
+
+ 
+
+ 
+Audio file embedded
+ 
+
+ 
+Video file embedded
+ 
+
+ 
+ 
+Michael Bryson
+QA Engineer
+Software Engineering
+Big Data
+
+Belfast, N. Ireland
+michael.bryson@hpe.com
+
+
+ 

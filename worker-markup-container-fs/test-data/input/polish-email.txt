@@ -1,0 +1,18 @@
+From: Aga W
+Sent: Fri Jan 6 15:19:31 2017
+To: Smith, Conal
+Subject: Re: Hello, test email
+Importance: Normal
+
+Hi! Here's your random message, that you asked for:)
+Have a great day 
+
+W dniu piątek, 6 stycznia 2017 Smith, Conal <conal.smith@hpe.com> napisał:
+
+Hi
+ 
+This is a test email to see what a  is, sent from Outlook.
+ 
+Thanks
+ 
+ 

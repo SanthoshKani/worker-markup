@@ -1,0 +1,107 @@
+From: K, Tom
+Sent: Fri Nov 25 10:52:09 2016
+To: D, Mohanasundaram; S, Dan
+Cc: B, Rick (Rick); openvpn.community@lists.com
+Subject: Re: Had to reimage my ubuntu workstation.....
+Importance: Normal
+
+By chance was the "green light" ever provided for the move out of redacted.com to new.redacted.com domain?  Appreciate the help here.
+
+/tom
+ 
+-- 
+Tom K
+Strategist and Solutions
+EG Quality Strategy and Analytics
+
+
+On 10/4/16, 4:30 PM, "openvpn.community-request@lists.com on behalf of D, Mohanasundaram" <openvpn.community-request@lists.com on behalf of mohanasundaram.d@hpe.com> wrote:
+
+    Thanks Dan,
+    
+    Hope we take action soon to move out of redacted.com to new.redacted.com domain. This
+    may stop working on Oct 31 or some day. Who are the OpenVPM admins?
+    
+    Thanks
+    Mohan
+    
+    
+    
+    On Mon, 2016-10-03 at 09:45 -0600, S, Dan wrote:
+    > Mohan,
+    > 
+    > We have not yet migrated the osprey[01].fc.com systems.  These can be moved at any time to osprey[01].ftc.net but I need the "green light" from the OpenVPN admins to do so -- earlier in the year we decided to wait.
+    > 
+    > As for osprey[01].linux.com, these also remain intact, but there are new hosts osprey[01].osp.com that are set up in DNS.  They don't appear to respond to any ping or SSH attempts.
+    > 
+    > 
+    > Dan S
+    > Hewlett Packard Enterprise Open Source Program Office
+    > 
+    > -----Original Message-----
+    > From: openvpn.community-request@lists.com [mailto:openvpn.community-request@lists.com] On Behalf Of D, Mohanasundaram
+    > Sent: Monday, October 03, 2016 8:25 AM
+    > To: B, Rick (Rick) <rick.b@hpe.com>
+    > Cc: openvpn.community@lists.com
+    > Subject: Re: Had to reimage my ubuntu workstation.....
+    > 
+    > Looks like we need to find the equivalents for the following hp.com servers and replace them at https://hpedia.osp.com/wiki/Open
+    > ospra0.linux.hp.com
+    > ospra1.linux.hp.com
+    > http://autocache.com/
+    > http://remoteaccess.com
+    > intranet.com
+    > http://itsupport.com/portal/site/documentdetail?docid=KM32
+    > vwpc.austin.com
+    > 
+    > I do not know the new servers and looking for them. If some one has please do replace.
+    > 
+    > Regards
+    > Mohan
+    > 
+    > 
+    > On Mon, 2016-10-03 at 08:36 -0400, Rick B wrote:
+    > > This tends to be the most up-to-date resource for information:
+    > > 
+    > > https://hpedia.osp.com/wiki/Open
+    > > 
+    > > If you find something different,  please update the wiki.
+    > > 
+    > > I use both openvpn on 16.76 as well as openconnect with the juniper 
+    > > gateways:
+    > > 
+    > > https://hpedia.osp.com/wiki/OpenConnect
+    > > 
+    > > I find openconnect to have somewhat better latency but it does seem 
+    > > susceptible to 'noise' that causes connections to occasionally drop.
+    > > 
+    > > Rick
+    > > 
+    > > 
+    > > 
+    > > On 10/02/2016 05:07 PM, L, Benson wrote:
+    > > > Mike,
+    > > > 
+    > > >  
+    > > > 
+    > > > Which certificate are you referring to?  Is this the Class B digital 
+    > > > badge certificate or is it the SSL Certificate used for servers?  
+    > > > Both have been migrated to http://mydigi.com/ now.
+    > > > 
+    > > >  
+    > > > 
+    > > > Thank you!
+    > > > 
+    > > >  
+    > > > 
+    > > > Benson
+    > > > 
+    > > >  
+    > > >
+    > > 
+    > 
+    > 
+    
+    
+    
+

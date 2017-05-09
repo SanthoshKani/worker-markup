@@ -1,0 +1,71 @@
+---
+tag: "CAF-2173-newline-before-condensed-header.txt"
+testCaseInformation:
+  associatedTickets: null
+  comments: "CAF-2173-newline-before-condensed-header.txt"
+  description: null
+  testCaseId: "CAF-2173-newline-before-condensed-header.txt"
+inputData:
+  containerId: null
+  email: true
+  hashConfiguration:
+  - fields:
+    - name: "To"
+      normalizationType: "NAME_ONLY"
+    - name: "From"
+      normalizationType: "NAME_ONLY"
+    - name: "Body"
+      normalizationType: "REMOVE_WHITESPACE_AND_LINKS"
+    hashFunctions:
+    - "XXHASH64"
+    name: "Normalized"
+    scope: "EMAIL_SPECIFIC"
+  inputFile: "CAF-2173-newline-before-condensed-header.txt"
+  outputFieldList:
+  - field: "SECTION_SORT"
+    xPathExpression: "/root/email[1]/headers/Sent/@dateUtc"
+  - field: "SECTION_ID"
+    xPathExpression: "/root/email[1]/hash/digest/@value"
+  - field: "PARENT_ID"
+    xPathExpression: "/root/email[2]/hash/digest/@value"
+  - field: "ROOT_ID"
+    xPathExpression: "/root/email[last()]/hash/digest/@value"
+  - field: "XML"
+    xPathExpression: "."
+  sourceData:
+    subject:
+    - "CAF Test Extract - simple"
+    from:
+    - "Admin/hpq%HPQ@hpswlabs.hp.com"
+    to:
+    - "Admin/hpq%hpq@hpswlabs.hp.com"
+    sent:
+    - "Thu, 19 Nov 2015 09:25:21 +0000"
+  storageReference: null
+  useDataStore: false
+expectedOutputData:
+  comparisonType: "TEXT"
+  expectedContentFile: null
+  expectedSimilarityPercentage: 0
+  fieldList:
+  - name: "SECTION_SORT"
+    value: "2001-04-20T08:57:00Z"
+  - name: "SECTION_ID"
+    value: "3a5cddb4e045339c"
+  - name: "ROOT_ID"
+    value: "3a5cddb4e045339c"
+  - name: "XML"
+    value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<root><subject>CAF Test\
+      \ Extract - simple</subject><from>Admin/hpq%HPQ@hpswlabs.hp.com</from><to>Admin/hpq%hpq@hpswlabs.hp.com</to><CONTENT><email><hash\
+      \ name=\"Normalized\"><config><fields><field name=\"To\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"From\" normalizationType=\"NAME_ONLY\" /><field\
+      \ name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest\
+      \ function=\"XXHASH64\" value=\"3a5cddb4e045339c\" /></hash><headers><From>From:\
+      \ jmunoz@mcnallytemple.com</From>\r\n<Sent dateUtc=\"2001-04-20T08:57:00Z\"\
+      >Sent: Fri, 20 Apr 2001 01:57:00 -0700 (PDT)</Sent>\r\n<To>To: abb@eslawfirm.com</To>\r\
+      \n<Subject>Subject: IEP News 4/20</Subject>\r\n</headers><body>\r\n??On a unanimous\
+      \ roll call, the Senate voted final approval and sent to Davis\r\nan \"urgency\"\
+      \ bill, SB 52, that repealed the rebate program, which the governor\r\nhad previously\
+      \ fought for and defended.</body></email></CONTENT><sent>Thu, 19 Nov 2015 09:25:21\
+      \ +0000</sent></root>\r\n"
+  status: "COMPLETED"

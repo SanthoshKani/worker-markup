@@ -1,0 +1,103 @@
+---
+tag: "CAF_11026/yahoo-gmail-outlook.txt"
+testCaseInformation:
+  associatedTickets: "CAF-2665"
+  comments: "CAF_11026/yahoo-gmail-outlook.txt"
+  description: "Markup Worker support for GMail Web Client"
+  testCaseId: "CAF_11026"
+inputData:
+  containerId: null
+  email: true
+  hashConfiguration:
+  - fields:
+    - name: "To"
+      normalizationType: "NAME_ONLY"
+    - name: "From"
+      normalizationType: "NAME_ONLY"
+    - name: "Body"
+      normalizationType: "REMOVE_WHITESPACE_AND_LINKS"
+    hashFunctions:
+    - "XXHASH64"
+    name: "Normalized"
+    scope: "EMAIL_SPECIFIC"
+  inputFile: "CAF_11026/yahoo-gmail-outlook.txt"
+  outputFieldList:
+  - field: "SECTION_SORT"
+    xPathExpression: "/root/email[1]/headers/Sent/@dateUtc"
+  - field: "SECTION_ID"
+    xPathExpression: "/root/email[1]/hash/digest/@value"
+  - field: "PARENT_ID"
+    xPathExpression: "/root/email[2]/hash/digest/@value"
+  - field: "ROOT_ID"
+    xPathExpression: "/root/email[last()]/hash/digest/@value"
+  - field: "XML"
+    xPathExpression: "."
+  sourceData:
+    subject:
+    - "CAF Test Extract - simple"
+    from:
+    - "Admin/hpq%HPQ@hpswlabs.hp.com"
+    to:
+    - "Admin/hpq%hpq@hpswlabs.hp.com"
+    sent:
+    - "Thu, 19 Nov 2015 09:25:21 +0000"
+  storageReference: null
+  useDataStore: false
+expectedOutputData:
+  comparisonType: "TEXT"
+  expectedContentFile: null
+  expectedSimilarityPercentage: 0
+  fieldList:
+  - name: "SECTION_SORT"
+    value: "2017-01-06T11:09:06Z"
+  - name: "SECTION_ID"
+    value: "d17f4ee98722268e"
+  - name: "PARENT_ID"
+    value: "f353f177481d63e9"
+  - name: "ROOT_ID"
+    value: "2db59c0b8a375e03"
+  - name: "XML"
+    value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<root><subject>CAF Test\
+      \ Extract - simple</subject><from>Admin/hpq%HPQ@hpswlabs.hp.com</from><to>Admin/hpq%hpq@hpswlabs.hp.com</to><CONTENT><email><hash\
+      \ name=\"Normalized\"><config><fields><field name=\"To\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"From\" normalizationType=\"NAME_ONLY\" /><field\
+      \ name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest\
+      \ function=\"XXHASH64\" value=\"d17f4ee98722268e\" /></hash><headers><From>From:\
+      \ C Smith</From>\r\n<Sent dateUtc=\"2017-01-06T11:09:06Z\">Sent: Fri Jan 6 11:09:06\
+      \ 2017</Sent>\r\n<To>To: Smith, Conal</To>\r\n<Subject>Subject: Re: GMail investigation</Subject>\r\
+      \n<Importance>Importance: Normal</Importance>\r\n</headers><body>\r\nReply from\
+      \ GMail\r\n\r\n</body></email><email><hash name=\"Normalized\"><config><fields><field\
+      \ name=\"To\" normalizationType=\"NAME_ONLY\" /><field name=\"From\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\"\
+      \ /></fields></config><digest function=\"XXHASH64\" value=\"f353f177481d63e9\"\
+      \ /></hash><headers>On <Sent dateUtc=\"2017-01-06T11:08:00Z\">Fri, Jan 6, 2017\
+      \ at 11:08 AM</Sent>,<From> Smith, Conal &lt;conal.smith@hpe.com&gt; </From>wrote:\r\
+      \n</headers><body>\r\nReply from outlook.\r\n \r\n</body></email><email><hash\
+      \ name=\"Normalized\"><config><fields><field name=\"To\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"From\" normalizationType=\"NAME_ONLY\" /><field\
+      \ name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest\
+      \ function=\"XXHASH64\" value=\"59061e63362a38e2\" /></hash><headers><From>From:\
+      \ C Smith [mailto:csmith00123@redactedEmail.com] </From>\r\n<Sent dateUtc=\"\
+      2017-01-06T11:07:00Z\">Sent: 06 January 2017 11:07</Sent>\r\n<To>To: Smith,\
+      \ Conal &lt;conal.smith@hpe.com&gt;</To>\r\n<Subject>Subject: Fwd: GMail investigation</Subject>\r\
+      \n</headers><body> \r\n \r\n</body></email><divider>---------- Forwarded message\
+      \ ----------\r\n</divider><email><hash name=\"Normalized\"><config><fields><field\
+      \ name=\"To\" normalizationType=\"NAME_ONLY\" /><field name=\"From\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\"\
+      \ /></fields></config><digest function=\"XXHASH64\" value=\"a3e7d3a285d4367a\"\
+      \ /></hash><headers><From>From: adam rogan &lt;arogan00456@redactedEmail.com&gt;</From>\r\
+      \n<Sent dateUtc=\"2017-01-06T10:55:00Z\">Date: Fri, Jan 6, 2017 at 10:55 AM</Sent>\r\
+      \n<Subject>Subject: Re: GMail investigation</Subject>\r\n<To>To: \"csmith00123@redactedEmail.com\"\
+      \ &lt;csmith00123@redactedEmail.com&gt;</To>\r\n</headers><body>\r\nThis is\
+      \ an email sent from a yahoo client.\r\n \r\n</body></email><email><hash name=\"\
+      Normalized\"><config><fields><field name=\"To\" normalizationType=\"NAME_ONLY\"\
+      \ /><field name=\"From\" normalizationType=\"NAME_ONLY\" /><field name=\"Body\"\
+      \ normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest\
+      \ function=\"XXHASH64\" value=\"2db59c0b8a375e03\" /></hash><headers>On <Sent\
+      \ dateUtc=\"2017-01-06T10:53:00Z\">Friday, 6 January 2017, 10:53</Sent>,<From>\
+      \ \"Smith, Conal\" &lt;conal.smith@hpe.com&gt; </From>wrote:\r\n</headers><body>\
+      \ \r\nHi\r\n \r\nThis is the first email sent from outlook to a yahoo client.\
+      \ The purpose is to test if Gmail always displays the date in the same manner.\r\
+      \n \r\nThanks\r\n \r\n \r\n \r\n \r\n\r\n</body></email></CONTENT><sent>Thu,\
+      \ 19 Nov 2015 09:25:21 +0000</sent></root>\r\n"
+  status: "COMPLETED"

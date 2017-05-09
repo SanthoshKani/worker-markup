@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright 2015-2017 Hewlett Packard Enterprise Development LP.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<root><CONTENT><email>From: Hardy, Dermot
+DateSent: Mon May 23 20:32:34 2016
+Recipient: Bryson, Michael; Reid, Andy; Ploch, Krzysztof; McAlynn, Michael
+Subject: RE: GitHub Umbrella repository
+Priority: Normal
+Attachments: image001.jpg
+
+If I understand it right using subtrees is basically having a copy of
+the files in the central repository – again I think it would cause more
+confusion than it would solve (with the code being is multiple places
+and the merges that need to take place etc.)
+
+ 
+
+ 
+
+From: Bryson, Michael 
+Sent: 23 May 2016 3:18 PM
+To: Hardy, Dermot &lt;dermot.hardy@hpe.com&gt;; Reid, Andy
+&lt;andrew.reid@hpe.com&gt;; Ploch, Krzysztof &lt;krzysztof.ploch@hpe.com&gt;;
+McAlynn, Michael &lt;michael.mcalynn@hpe.com&gt;
+Subject: RE: GitHub Umbrella repository
+
+ 
+
+I found this article on using subtrees instead of submodules, not sure
+if it is of use but thought I would share anyway:
+
+http://blogs.atlassian.com/2013/05/alternatives-to-git-submodule-git-su
+btree/
+
+ 
+
+ 
+
+ 
+
+From: Hardy, Dermot 
+Sent: 23 May 2016 15:03
+To: Reid, Andy &lt;andrew.reid@hpe.com &lt;mailto:andrew.reid@hpe.com&gt; &gt;;
+Bryson, Michael &lt;michael.bryson@hpe.com &lt;mailto:michael.bryson@hpe.com&gt;
+&gt;; Ploch, Krzysztof &lt;krzysztof.ploch@hpe.com
+&lt;mailto:krzysztof.ploch@hpe.com&gt; &gt;; McAlynn, Michael
+&lt;michael.mcalynn@hpe.com &lt;mailto:michael.mcalynn@hpe.com&gt; &gt;
+Subject: RE: GitHub Umbrella repository
+
+ 
+
+We can try it but my gut feeling is that it that would be complex to
+manage and actually cause more confusion than it solves – because (1) it
+will make it look like the projects are missing if you don’t use a
+particular git clone option, and (2) any updates make when you browse
+through to the sub-module will not automatically appear when you browse
+again because the main projects is still linked to a particular earlier
+commit.
+
+ 
+
+ 
+
+From: Reid, Andy 
+Sent: 23 May 2016 2:56 PM
+To: Bryson, Michael &lt;michael.bryson@hpe.com
+&lt;mailto:michael.bryson@hpe.com&gt; &gt;; Hardy, Dermot &lt;dermot.hardy@hpe.com
+&lt;mailto:dermot.hardy@hpe.com&gt; &gt;; Ploch, Krzysztof
+&lt;krzysztof.ploch@hpe.com &lt;mailto:krzysztof.ploch@hpe.com&gt; &gt;; McAlynn,
+Michael &lt;michael.mcalynn@hpe.com &lt;mailto:michael.mcalynn@hpe.com&gt; &gt;
+Subject: RE: GitHub Umbrella repository
+
+ 
+
+Apologies for taking a ridiculous amount of time to reply.
+
+ 
+
+This looks nice, I’m wondering if we should consider using sub modules
+to tie snapshots of the dependent repos into a release of the umbrella
+repo. Dermot what do you think? Unnecessary?
+
+ 
+
+From: Bryson, Michael 
+Sent: 29 April 2016 15:44
+To: Reid, Andy &lt;andrew.reid@hpe.com &lt;mailto:andrew.reid@hpe.com&gt; &gt;;
+Hardy, Dermot &lt;dermot.hardy@hpe.com &lt;mailto:dermot.hardy@hpe.com&gt; &gt;;
+Ploch, Krzysztof &lt;krzysztof.ploch@hpe.com
+&lt;mailto:krzysztof.ploch@hpe.com&gt; &gt;; McAlynn, Michael
+&lt;michael.mcalynn@hpe.com &lt;mailto:michael.mcalynn@hpe.com&gt; &gt;
+Subject: GitHub Umbrella repository
+
+ 
+
+Hi All,
+
+ 
+
+When you get a minute take a look at this repository?
+
+https://github.hpe.com/michael-bryson/caf-audit-management-service
+
+ 
+
+I have put this together as an example of what we could do with the
+umbrella repositories in GitHub. Basically the idea is to give a brief
+overview of the feature, in this case Auditing and each of the
+constituent components involved. There are links directly to the
+component projects so they are easy to find as well as a link the
+testcases for the feature. The Jenkins build status is also shown for
+each of the components.
+
+ 
+
+We could then add release notes etc. to this top level as we are
+releasing a full feature in most cases rather than components. We should
+still maintain detailed documentation on the individual components but
+with this top level it makes it easier to find.
+
+ 
+
+This is not a final draft so let me know what you think and if there is
+other stuff you think we could add here.
+
+ 
+
+Thanks
+
+ 
+
+Michael Bryson
+QA Engineer
+Software Engineering
+Big Data
+
+Belfast, N. Ireland
+michael.bryson@hpe.com &lt;mailto:michael.bryson@hpe.com&gt; 
+
+ &lt;http://www.hpe.com/&gt; 
+
+ 
+
+
+RE GitHu/image001.jpg
+</email><email>From: McAlynn, Michael
+DateSent: Fri Apr 22 10:54:33 2016
+Recipient: Reid, Andy; Ploch, Krzysztof; Bryson, Michael
+Subject: RE: keyview supported file types
+Importance: Normal
+Attachments: KeyView_FilterSDK_10.25.0.0_JavaProgramming_en.pdf
+
+Here’s the Java version (may be of use working with keyview worker).
+
+ 
+
+Regards, Michael.
+
+ 
+
+From: Reid, Andy 
+Sent: 22 April 2016 11:42
+To: Ploch, Krzysztof; McAlynn, Michael; Bryson, Michael
+Subject: FW: keyview supported file types
+
+ 
+
+For future reference
+
+ 
+
+From: Reid, Andy 
+Sent: 22 April 2016 11:41
+To: Chakraborty, Shubhendu &lt;shubhendu.chakraborty@hpe.com
+&lt;mailto:shubhendu.chakraborty@hpe.com&gt; &gt;; Puccianti, Sylvain B
+&lt;sylvain.puccianti@hpe.com &lt;mailto:sylvain.puccianti@hpe.com&gt; &gt;;
+Kulkarni, Rahul &lt;rahul.kulkarni@hpe.com &lt;mailto:rahul.kulkarni@hpe.com&gt;
+&gt;
+Subject: RE: file types
+
+ 
+
+Hi Sylvain,
+
+                The attached lists from pg193-224 the formats (and
+level of support) in KeyView.
+
+ 
+
+I hope this is sufficient.
+
+ 
+
+Thanks
+
+Andy
+
+ 
+
+ 
+
+From: Chakraborty, Shubhendu 
+Sent: 19 April 2016 19:29
+To: Puccianti, Sylvain B &lt;sylvain.puccianti@hpe.com
+&lt;mailto:sylvain.puccianti@hpe.com&gt; &gt;; Reid, Andy &lt;andrew.reid@hpe.com
+&lt;mailto:andrew.reid@hpe.com&gt; &gt;; Kulkarni, Rahul &lt;rahul.kulkarni@hpe.com
+&lt;mailto:rahul.kulkarni@hpe.com&gt; &gt;
+Subject: RE: file types
+
+ 
+
+Sure…we will copy accordingly…that will be helpful indeed…
+
+ 
+
+Currently observed in Aspen that nsf and ost archive files are not
+getting extracted…I assume nsf extraction needs lotus notes
+configuration…not sure how it should work in Linux box (we earlier did
+in Windows box)…
+
+ 
+
+ 
+
+WR,
+
+Shubhendu
+
+ 
+
+ 
+
+From: Puccianti, Sylvain B 
+Sent: Tuesday, April 19, 2016 11:54 PM
+To: Reid, Andy &lt;andrew.reid@hpe.com &lt;mailto:andrew.reid@hpe.com&gt; &gt;;
+Chakraborty, Shubhendu &lt;shubhendu.chakraborty@hpe.com
+&lt;mailto:shubhendu.chakraborty@hpe.com&gt; &gt;; Kulkarni, Rahul
+&lt;rahul.kulkarni@hpe.com &lt;mailto:rahul.kulkarni@hpe.com&gt; &gt;
+Subject: RE: file types
+
+ 
+
+Shubhendhu, you can probably share the data set and list of issues
+encountered so far?
+
+ 
+
+From: Reid, Andy 
+Sent: Tuesday, April 19, 2016 10:42 AM
+To: Puccianti, Sylvain B &lt;sylvain.puccianti@hpe.com
+&lt;mailto:sylvain.puccianti@hpe.com&gt; &gt;; Chakraborty, Shubhendu
+&lt;shubhendu.chakraborty@hpe.com &lt;mailto:shubhendu.chakraborty@hpe.com&gt; &gt;;
+Kulkarni, Rahul &lt;rahul.kulkarni@hpe.com &lt;mailto:rahul.kulkarni@hpe.com&gt;
+&gt;
+Subject: RE: file types
+
+ 
+
+:(
+
+Do you have a set we could add to our own to validate? I’ll also see if
+I can get a set from the Keyview teams ghost.
+
+ 
+
+Andy
+
+ 
+
+ 
+
+From: Puccianti, Sylvain B 
+Sent: 19 April 2016 18:29
+To: Reid, Andy &lt;andrew.reid@hpe.com &lt;mailto:andrew.reid@hpe.com&gt; &gt;;
+Chakraborty, Shubhendu &lt;shubhendu.chakraborty@hpe.com
+&lt;mailto:shubhendu.chakraborty@hpe.com&gt; &gt;; Kulkarni, Rahul
+&lt;rahul.kulkarni@hpe.com &lt;mailto:rahul.kulkarni@hpe.com&gt; &gt;
+Subject: file types
+
+ 
+
+Andy,
+
+ 
+
+Do you have a list of file types officially supported and qualified by
+CAF processing?
+
+ 
+
+Sylvain
+
+PS: the answer cannot be ‘whatever keyview supports’ :)
+</email></CONTENT></root>

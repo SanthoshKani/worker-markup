@@ -1,0 +1,46 @@
+From: Michael Bryson
+Sent: Thu Feb 16 12:35:42 2017
+To: Bryson, Michael
+Subject: Fw: Test Hotmail Email
+Importance: Normal
+
+Forwarded to Outlook client
+
+
+
+
+
+From: Michael Bryson <abc@redactedEmail.com>
+Sent: 16 February 2017 12:33
+To: Michael Bryson
+Subject: Fw: Test Hotmail Email 
+ 
+Forwarded to hotmail
+
+
+
+
+
+From: Michael Bryson <abc@redactedEmail.com>
+Sent: 16 February 2017 12:30
+To: Michael Bryson
+Subject: Re: Test Hotmail Email 
+ 
+Reply to first hotmail email
+
+
+
+
+From: Michael Bryson <abc@redactedEmail.com>
+Sent: 16 February 2017 12:28
+To: Michael Bryson
+Subject: Test Hotmail Email 
+ 
+Hi,
+
+This is a test email to see how Hotmail email headers are displayed.
+
+Thanks
+Michael
+
+

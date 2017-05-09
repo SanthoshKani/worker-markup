@@ -1,0 +1,45 @@
+From: Ploch, Krzysztof
+Sent: Thu Nov 26 13:51:59 2015
+To: Bryson, Michael
+Subject: RE: Test files
+Importance: Normal
+ 
+Michael, I want to copy files from tests somewhere – can you give me a right to write to this folder / create folders?
+ 
+From: Bryson, Michael 
+Sent: 23 November 2015 15:26
+To: Ploch, Krzysztof <krzysztof.ploch@hpe.com>
+Subject: RE: Test files
+ 
+Try again
+ 
+From: Ploch, Krzysztof 
+Sent: 23 November 2015 15:26
+To: Bryson, Michael
+Subject: RE: Test files
+ 
+I have access to the machine, just not to the folder. 
+ 
+From: Ploch, Krzysztof 
+Sent: 23 November 2015 15:14
+To: Bryson, Michael <michael.bryson@hpe.com>
+Subject: RE: Test files
+ 
+Doesn’t seem like I have access there.
+ 
+From: Bryson, Michael 
+Sent: 23 November 2015 14:24
+To: Ploch, Krzysztof <krzysztof.ploch@hpe.com>
+Subject: RE: Test files
+ 
+Try \\bson\Test Data\1-ForAutomation
+ 
+ 
+From: Ploch, Krzysztof 
+Sent: 23 November 2015 14:12
+To: Bryson, Michael
+Subject: Test files
+ 
+Michael,
+ 
+Can you share your speech and ocr test input files somewhere?

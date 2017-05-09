@@ -1,0 +1,71 @@
+---
+tag: "LanguageMappingTest.txt"
+testCaseInformation:
+  associatedTickets: null
+  comments: "LanguageMappingTest.txt"
+  description: null
+  testCaseId: "LanguageMappingTest.txt"
+inputData:
+  containerId: null
+  email: true
+  hashConfiguration:
+  - fields:
+    - name: "To"
+      normalizationType: "NAME_ONLY"
+    - name: "From"
+      normalizationType: "NAME_ONLY"
+    - name: "Body"
+      normalizationType: "REMOVE_WHITESPACE_AND_LINKS"
+    hashFunctions:
+    - "XXHASH64"
+    name: "Normalized"
+    scope: "EMAIL_SPECIFIC"
+  inputFile: "LanguageMappingTest.txt"
+  outputFieldList:
+  - field: "SECTION_SORT"
+    xPathExpression: "/root/email[1]/headers/Sent/@dateUtc"
+  - field: "SECTION_ID"
+    xPathExpression: "/root/email[1]/hash/digest/@value"
+  - field: "PARENT_ID"
+    xPathExpression: "/root/email[2]/hash/digest/@value"
+  - field: "ROOT_ID"
+    xPathExpression: "/root/email[last()]/hash/digest/@value"
+  - field: "XML"
+    xPathExpression: "."
+  sourceData:
+    subject:
+    - "CAF Test Extract - simple"
+    from:
+    - "Admin/hpq%HPQ@hpswlabs.hp.com"
+    to:
+    - "Admin/hpq%hpq@hpswlabs.hp.com"
+    sent:
+    - "Thu, 19 Nov 2015 09:25:21 +0000"
+  storageReference: null
+  useDataStore: false
+expectedOutputData:
+  comparisonType: "TEXT"
+  expectedContentFile: null
+  expectedSimilarityPercentage: 0
+  fieldList:
+  - name: "SECTION_SORT"
+    value: "2016-11-30T03:23:10Z"
+  - name: "SECTION_ID"
+    value: "85756113cd6140e6"
+  - name: "ROOT_ID"
+    value: "85756113cd6140e6"
+  - name: "XML"
+    value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<root><subject>CAF Test\
+      \ Extract - simple</subject><from>Admin/hpq%HPQ@hpswlabs.hp.com</from><to>Admin/hpq%hpq@hpswlabs.hp.com</to><CONTENT><email><hash\
+      \ name=\"Normalized\"><config><fields><field name=\"To\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"From\" normalizationType=\"NAME_ONLY\" /><field\
+      \ name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest\
+      \ function=\"XXHASH64\" value=\"85756113cd6140e6\" /></hash><headers><From>De:\
+      \ \"D, Daniel\" &lt;dan.d@hpe.com&gt;</From>\r\n<To>Para: openvpn.community@lists.com\
+      \ &lt;openvpn.community@lists.com&gt;</To>\r\n<Cc>Cc: \"D, Daniel\" &lt;dan.d@hpe.com&gt;</Cc>\r\
+      \n<Subject>Asunto: Migration of osprey gateway</Subject>\r\n<Sent dateUtc=\"\
+      2016-11-30T03:23:10Z\">Fecha: Wed, 30 Nov 2016 03:23:10 +0000</Sent>\r\n</headers><body>\r\
+      \nSome body text in spanish!\r\n\r\nMichael B\r\nQA Engineer\r\nSoftware Engineering\r\
+      \nBig Data\r\n\r\nmichael.b@hpe.com</body></email></CONTENT><sent>Thu, 19 Nov\
+      \ 2015 09:25:21 +0000</sent></root>\r\n"
+  status: "COMPLETED"

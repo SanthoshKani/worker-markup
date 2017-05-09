@@ -1,0 +1,16 @@
+{
+    "workerVersion": "1.2.0",
+    "outputQueue": "markupworker-test-output-1",
+    "threads": 1,
+    "emailHeaderMappings" : {
+      "From" : ["Von", "De", "Van", "Fra", "Från"],
+      "Subject" : ["Betreff", "Asunto", "Objet"],
+      "To" : ["Sent to", "Recipient", "An", "Para", "À"],
+      "Sent" : ["Date", "Date_Sent", "DateSent", "Gesendet", "Fecha", "Envoyé", "Datum", "Skickat", "Sendt"]
+    },
+    "condensedHeaderMultiLangMappings": {
+      "On" : ["Le", "W dniu", "Op", "Am", "På", "Den"],
+      "Separator" : ["użytkownik"],
+      "Wrote": ["a écrit", "napisał", "schreef","verzond","geschreven", "schrieb", "skrev"]
+    }
+}

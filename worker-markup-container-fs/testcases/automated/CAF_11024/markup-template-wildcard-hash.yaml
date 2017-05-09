@@ -1,0 +1,49 @@
+---
+sourceData:
+  subject:
+  - reference: null
+    data: Q0FGIFRlc3QgRXh0cmFjdCAtIHNpbXBsZQ==
+  from:
+  - reference: null
+    data: QWRtaW4vaHBxJUhQUUBocHN3bGFicy5ocC5jb20=
+  to:
+  - reference: null
+    data: QWRtaW4vaHBxJWhwcUBocHN3bGFicy5ocC5jb20=
+  sent:
+  - reference: null
+    data: VGh1LCAxOSBOb3YgMjAxNSAwOToyNToyMSArMDAwMA==
+  CHILD_INFO_1_HASH:
+  - reference: null
+    data: U09NRUhBU0hJTkZPMQ==
+  CHILD_INFO_2_HASH:
+  - reference: null
+    data: U09NRUhBU0hJTkZPMg==
+hashConfiguration:
+- name: "Normalized"
+  scope: "EMAIL_SPECIFIC"
+  fields:
+  - name: "to"
+    normalizationType: "NONE"
+  - name: "body"
+    normalizationType: "REMOVE_WHITESPACE"
+  hashFunctions:
+  - "XXHASH64"
+- name: "Variant"
+  scope: "EMAIL_THREAD"
+  fields:
+  - name: "cc"
+    normalizationType: "NONE"
+  - name: "subject"
+    normalizationType: "NONE"
+  - name: "sent"
+    normalizationType: "REMOVE_WHITESPACE"
+  - name: "CHILD_INFO_*_HASH"
+    normalizationType: "NONE"
+  hashFunctions:
+  - "XXHASH64"
+outputFields:
+- field: "XML"
+  xPathExpression: "."
+- field: "ALL_TO"
+  xPathExpression: "//To"
+isEmail: true

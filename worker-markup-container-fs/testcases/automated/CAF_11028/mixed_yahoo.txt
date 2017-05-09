@@ -1,0 +1,40 @@
+From: Pavlov, Edward
+Sent: Fri Feb 5 16:01:04 2016
+To: Paley, Mikhail
+Cc: ASPEn Dev Core; Albert, Jason
+Subject: Re: Marathon Deployment
+Importance: Normal
+
+Mikhail, 
+Can you add the db initialization to initpolicydb.sh script
+
+On Feb 4, 2016, at 5:27 PM, Paley, Mikhail <mikhail.paley@hpe.com> wrote:
+
+Please, note that I have added two new containers in Aspen Deploy: boilerplate and boilerplate-administration.
+NOTE: In order for them to start correctly, new DB schema should be installed. For instructions refer to ASP -1615.
+Also NOTE that you can exclude these containers from deployment,  just specify additional    –x “boilerplate”  when start deploy-workers.sh
+                          Regards, MIkhail
+ 
+P.S.
+Here the instructions for your convenience:
+ 
+ 
+Re-name and run  attached JAR with next arguments:
+(Replace 00.000.00.000 with host IP where Postgres is installed, update password if required )
+$ java -jar boilerplate-db-1.0-jar-with-dependencies.jar -db.connection jdbc:postgresql://00.000.00.000:5432 -db.name boilerplate -db.pass redacted -db.user redacted
+ostgres -fd
+ 
+In command prompt you should see: 
+ 
+about to perform DB installation from scratch.
+Created new database: boilerplate
+About to perform DB update.
+DB update finished.
+ 
+Check that "boilerplate" DB actually exist
+ 
+ 
+ 
+ 
+<boilerplate-db-1.0-jar-with-dependencies.jar.rename>
+

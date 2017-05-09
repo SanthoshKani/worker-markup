@@ -1,0 +1,123 @@
+---
+tag: "TestEmailChain.txt"
+testCaseInformation:
+  associatedTickets: null
+  comments: "TestEmailChain.txt"
+  description: null
+  testCaseId: "TestEmailChain.txt"
+inputData:
+  containerId: null
+  email: true
+  hashConfiguration:
+  - fields:
+    - name: "To"
+      normalizationType: "NAME_ONLY"
+    - name: "From"
+      normalizationType: "NAME_ONLY"
+    - name: "Body"
+      normalizationType: "REMOVE_WHITESPACE_AND_LINKS"
+    hashFunctions:
+    - "XXHASH64"
+    name: "Normalized"
+    scope: "EMAIL_SPECIFIC"
+  inputFile: "TestEmailChain.txt"
+  outputFieldList:
+  - field: "SECTION_SORT"
+    xPathExpression: "/root/email[1]/headers/Sent/@dateUtc"
+  - field: "SECTION_ID"
+    xPathExpression: "/root/email[1]/hash/digest/@value"
+  - field: "PARENT_ID"
+    xPathExpression: "/root/email[2]/hash/digest/@value"
+  - field: "ROOT_ID"
+    xPathExpression: "/root/email[last()]/hash/digest/@value"
+  - field: "XML"
+    xPathExpression: "."
+  sourceData:
+    subject:
+    - "CAF Test Extract - simple"
+    from:
+    - "Admin/hpq%HPQ@hpswlabs.hp.com"
+    to:
+    - "Admin/hpq%hpq@hpswlabs.hp.com"
+    sent:
+    - "Thu, 19 Nov 2015 09:25:21 +0000"
+  storageReference: null
+  useDataStore: false
+expectedOutputData:
+  comparisonType: "TEXT"
+  expectedContentFile: null
+  expectedSimilarityPercentage: 0
+  fieldList:
+  - name: "SECTION_ID"
+    value: "a6ac4006f1e28f0f"
+  - name: "PARENT_ID"
+    value: "50a6a88d06e07cc9"
+  - name: "ROOT_ID"
+    value: "ed9497930bb2e9f0"
+  - name: "XML"
+    value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<root><subject>CAF Test\
+      \ Extract - simple</subject><from>Admin/hpq%HPQ@hpswlabs.hp.com</from><to>Admin/hpq%hpq@hpswlabs.hp.com</to><CONTENT><email><hash\
+      \ name=\"Normalized\"><config><fields><field name=\"To\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"From\" normalizationType=\"NAME_ONLY\" /><field\
+      \ name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest\
+      \ function=\"XXHASH64\" value=\"a6ac4006f1e28f0f\" /></hash><headers><Fr_-om>Fr!\"\
+      £$%^*()_+-=\"om: Paul, Navamoni</Fr_-om>\r\n<Se.nt dateUtc=\"2016-07-22T15:15:00Z\"\
+      >Se\\|,./?nt: 22 July 2016 15:15</Se.nt>\r\n<To> T {[}]o: Reid, Andy &lt;andrew.reid@hpe.com&gt;;\
+      \ Hardy, Dermot &lt;dermot.hardy@hpe.com&gt;</To>\r\n<Cc>C  `¬c: Ploch, Krzysztof\
+      \ &lt;krzysztof.ploch@hpe.com&gt;</Cc>\r\n<Subject>Su:;@'~#bject: RE: plugin\
+      \ - ABC Integration</Subject>\r\n</headers><body>\r\nHi,\r\n\r\nMade up testing\
+      \ content by Greg, regarding headers containing illegal characters.\r\n\r\n\
+      Regards,\r\nNavamoni\r\n\r\n</body></email><email><hash name=\"Normalized\"\
+      ><config><fields><field name=\"To\" normalizationType=\"NAME_ONLY\" /><field\
+      \ name=\"From\" normalizationType=\"NAME_ONLY\" /><field name=\"Body\" normalizationType=\"\
+      REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest function=\"XXHASH64\"\
+      \ value=\"50a6a88d06e07cc9\" /></hash><headers><From>From: Paul, Navamoni</From>\r\
+      \n<Sent dateUtc=\"2016-07-21T16:16:00Z\">Sent: 21 July 2016 16:16</Sent>\r\n\
+      <To>Recipient: Reid, Andy &lt;andrew.reid@hpe.com&gt;; Hardy, Dermot &lt;dermot.hardy@hpe.com&gt;</To>\r\
+      \n<Cc>Cc: Ploch, Krzysztof &lt;krzysztof.ploch@hpe.com&gt;</Cc>\r\n<Subject>Subject:\
+      \ RE: plugin - ABC Integration</Subject>\r\n</headers><body>\r\nHi,\r\n\r\n\
+      Made up testing content by Greg, regarding standardised email headers.\r\n\r\
+      \nRegards,\r\nNavamoni\r\n\r\n</body></email><email><hash name=\"Normalized\"\
+      ><config><fields><field name=\"To\" normalizationType=\"NAME_ONLY\" /><field\
+      \ name=\"From\" normalizationType=\"NAME_ONLY\" /><field name=\"Body\" normalizationType=\"\
+      REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest function=\"XXHASH64\"\
+      \ value=\"50a6a88d06e07cc9\" /></hash><headers><From>From: Paul, Navamoni</From>\r\
+      \n<Sent dateUtc=\"2016-07-21T16:16:00Z\">Sent: 21 July 2016 16:16</Sent>\r\n\
+      <To>Recipient: Reid, Andy &lt;andrew.reid@hpe.com&gt;; Hardy, Dermot &lt;dermot.hardy@hpe.com&gt;</To>\r\
+      \n<Cc>Cc: Ploch, Krzysztof &lt;krzysztof.ploch@hpe.com&gt;</Cc>\r\n<Subject>Subject:\
+      \ RE: plugin - ABC Integration</Subject>\r\n</headers><body>\r\nHi,\r\n\r\n\
+      Made up testing content by Greg, regarding standardised email headers.\r\n\r\
+      \nRegards,\r\nNavamoni\r\n\r\n</body></email><email><hash name=\"Normalized\"\
+      ><config><fields><field name=\"To\" normalizationType=\"NAME_ONLY\" /><field\
+      \ name=\"From\" normalizationType=\"NAME_ONLY\" /><field name=\"Body\" normalizationType=\"\
+      REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest function=\"XXHASH64\"\
+      \ value=\"6d9042fe8511fdb\" /></hash><headers><From>From: Paul, Navamoni</From>\r\
+      \n<Sent dateUtc=\"2016-07-20T17:51:00Z\">Sent: 20 July 2016 17:51</Sent>\r\n\
+      <To>To: Reid, Andy &lt;andrew.reid@hpe.com&gt;; Hardy, Dermot &lt;dermot.hardy@hpe.com&gt;</To>\r\
+      \n<Cc>Cc: Ploch, Krzysztof &lt;krzysztof.ploch@hpe.com&gt;</Cc>\r\n<Subject>Subject:\
+      \ RE: plugin - ABC Integration</Subject>\r\n</headers><body>\r\nHi Navamoni,\r\
+      \n\r\nIs this ready yet?\r\n\r\nThanks,\r\nAndy\r\n\r\n</body></email><email><hash\
+      \ name=\"Normalized\"><config><fields><field name=\"To\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"From\" normalizationType=\"NAME_ONLY\" /><field\
+      \ name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest\
+      \ function=\"XXHASH64\" value=\"9eeebc83db6bd7b7\" /></hash><headers><From>From:\
+      \ Paul, Navamoni</From>\r\n<Sent dateUtc=\"2016-07-20T17:51:00Z\">Sent: 20 July\
+      \ 2016 17:51</Sent>\r\n<To>To: Reid, Andy &lt;andrew.reid@hpe.com&gt;; Hardy,\
+      \ Dermot &lt;dermot.hardy@hpe.com&gt;</To>\r\n<Cc>Cc: Ploch, Krzysztof &lt;krzysztof.ploch@hpe.com&gt;</Cc>\r\
+      \n<Subject>Subject: RE: plugin - ABC Integration</Subject>\r\n</headers><body>\r\
+      \nHi Andy, Dermot,\r\n\r\nWill make sure, that that details are available by\
+      \ tomorrow and if required we can go through having regular synchups, to identify\
+      \ and address issues as required.\r\n\r\nRegards,\r\nNavamoni\r\n\r\n</body></email><email><hash\
+      \ name=\"Normalized\"><config><fields><field name=\"To\" normalizationType=\"\
+      NAME_ONLY\" /><field name=\"From\" normalizationType=\"NAME_ONLY\" /><field\
+      \ name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest\
+      \ function=\"XXHASH64\" value=\"ed9497930bb2e9f0\" /></hash><headers><From>From:\
+      \ Reid, Andy</From>\r\n<Sent dateUtc=\"2016-07-19T18:49:00Z\">Sent: Tuesday,\
+      \ July 19, 2016 6:49 PM</Sent>\r\n<To>To: Paul, Navamoni &lt;paul.navamoni@hpe.com&gt;;\
+      \ Hardy, Dermot &lt;dermot.hardy@hpe.com&gt;</To>\r\n<Cc>Cc: Ploch, Krzysztof\
+      \ &lt;krzysztof.ploch@hpe.com&gt;</Cc>\r\n<Subject>Subject: plugin - ABC Integration</Subject>\r\
+      \n</headers><body>\r\nHi Navamoni,\r\n\r\nDermot will be working on this over\
+      \ the few days could you forward the details he will need?\r\n\r\nThanks,\r\n\
+      Andy\r\n</body></email></CONTENT><sent>Thu, 19 Nov 2015 09:25:21 +0000</sent></root>\r\
+      \n"
+  status: "COMPLETED"
