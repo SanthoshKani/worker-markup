@@ -18,3 +18,4 @@ logging:
   level: INFO
   loggers:
     com.hpe.caf: INFO
+    com.joestelmach.natty.Parser: ERROR
