@@ -15,7 +15,7 @@
 #
 
 logging:
-  level: INFO
+  level: ${CAF_LOG_LEVEL:-INFO}
   loggers:
-    com.hpe.caf: INFO
-    com.joestelmach.natty.Parser: ERROR
+    com.hpe.caf: ${CAF_LOG_LEVEL:-INFO}
+    com.joestelmach.natty.Parser: ${CAF_LOG_LEVEL:-ERROR}
