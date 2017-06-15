@@ -6,7 +6,7 @@ More information on the functioning of the Markup Worker is available [here](../
 
 ## Container Deployment and Configuration
 
-The Markup Worker can be deployed using the compose file [here](https://github.hpe.com/caf/data-processing-service-deploy). For instructions on how to deploy using the compose file see the [Data Processing Getting Started Guide](https://pages.github.hpe.com/caf/data-processing-service/pages/en-us/Getting-Started).
+The Markup Worker can be deployed using the compose file [here](https://github.com/CAFDataProcessing/data-processing-service-deploy). For instructions on how to deploy using the compose file see the [Data Processing Getting Started Guide](https://pages.github.hpe.com/caf/data-processing-service/pages/en-us/Getting-Started).
 
 Details on configuration of the Markup Worker can be found [here](../markup-worker.md#configuration).
 
