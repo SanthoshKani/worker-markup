@@ -13,18 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.hpe.caf.worker.markup;
+package com.github.cafdataprocessing.worker.markup.core.exceptions;
 
-@SuppressWarnings("serial")
-public class ConversationIndexParserException extends Exception
+/**
+ *
+ * @author mcgreeva
+ */
+public final class MarkupWorkerExceptions extends Exception
 {
-    public ConversationIndexParserException(final String message)
-    {
-        super(message);
-    }
-
-    public ConversationIndexParserException(final String message, final Throwable cause)
-    {
-        super(message, cause);
-    }
+    private MarkupWorkerExceptions(){}
+    
+    public static final String JDOMEXCEPTION_FAILURE = "MARKUP_WORKER_FAILURE_0001";
+    public static final String EXECUTION_EXCEPTION = "MARKUP_WORKER_FAILURE_0002";
 }

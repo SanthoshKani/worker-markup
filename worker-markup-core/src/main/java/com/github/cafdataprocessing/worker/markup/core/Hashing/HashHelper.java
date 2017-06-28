@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.hpe.caf.worker.markup.Hashing;
+package com.github.cafdataprocessing.worker.markup.core.Hashing;
 
 import com.hpe.caf.worker.markup.*;
 import net.openhft.hashing.LongHashFunction;
