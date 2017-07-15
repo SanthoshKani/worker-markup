@@ -51,9 +51,9 @@ expectedOutputData:
   - name: "SECTION_SORT"
     value: "2016-07-21T16:16:00Z"
   - name: "SECTION_ID"
-    value: "50a6a88d06e07cc9"
+    value: "c1f80484be310b53"
   - name: "PARENT_ID"
-    value: "50a6a88d06e07cc9"
+    value: "c1f80484be310b53"
   - name: "ROOT_ID"
     value: "ed9497930bb2e9f0"
   - name: "XML"
@@ -62,7 +62,7 @@ expectedOutputData:
       \ name=\"Normalized\"><config><fields><field name=\"To\" normalizationType=\"\
       NAME_ONLY\" /><field name=\"From\" normalizationType=\"NAME_ONLY\" /><field\
       \ name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest\
-      \ function=\"XXHASH64\" value=\"50a6a88d06e07cc9\" /></hash><headers><From>From:\
+      \ function=\"XXHASH64\" value=\"c1f80484be310b53\" /></hash><headers><From>From:\
       \ Paul, Navamoni</From>\r\n<Sent dateUtc=\"2016-07-21T16:16:00Z\">Date: 21 July\
       \ 2016 16:16</Sent>\r\n<To>Recipient: Reid, Andy &lt;andrew.reid@hpe.com&gt;;\
       \ Hardy, Dermot &lt;dermot.hardy@hpe.com&gt;</To>\r\n<Cc>Cc: Ploch, Krzysztof\
@@ -72,7 +72,7 @@ expectedOutputData:
       \n\r\n</body></email><email><hash name=\"Normalized\"><config><fields><field\
       \ name=\"To\" normalizationType=\"NAME_ONLY\" /><field name=\"From\" normalizationType=\"\
       NAME_ONLY\" /><field name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\"\
-      \ /></fields></config><digest function=\"XXHASH64\" value=\"50a6a88d06e07cc9\"\
+      \ /></fields></config><digest function=\"XXHASH64\" value=\"c1f80484be310b53\"\
       \ /></hash><headers><From>From: Paul, Navamoni</From>\r\n<Sent dateUtc=\"2016-07-21T16:16:00Z\"\
       >Date: 21 July 2016 16:16</Sent>\r\n<To>Recipient: Reid, Andy &lt;andrew.reid@hpe.com&gt;;\
       \ Hardy, Dermot &lt;dermot.hardy@hpe.com&gt;</To>\r\n<Cc>Cc: Ploch, Krzysztof\

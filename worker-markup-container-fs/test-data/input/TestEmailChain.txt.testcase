@@ -49,7 +49,7 @@ expectedOutputData:
   expectedSimilarityPercentage: 0
   fieldList:
   - name: "SECTION_ID"
-    value: "a6ac4006f1e28f0f"
+    value: "46548a04f322ead3"
   - name: "PARENT_ID"
     value: "50a6a88d06e07cc9"
   - name: "ROOT_ID"
@@ -60,7 +60,7 @@ expectedOutputData:
       \ name=\"Normalized\"><config><fields><field name=\"To\" normalizationType=\"\
       NAME_ONLY\" /><field name=\"From\" normalizationType=\"NAME_ONLY\" /><field\
       \ name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest\
-      \ function=\"XXHASH64\" value=\"a6ac4006f1e28f0f\" /></hash><headers><Fr_-om>Fr!\"\
+      \ function=\"XXHASH64\" value=\"46548a04f322ead3\" /></hash><headers><Fr_-om>Fr!\"\
       £$%^*()_+-=\"om: Paul, Navamoni</Fr_-om>\r\n<Se.nt dateUtc=\"2016-07-22T15:15:00Z\"\
       >Se\\|,./?nt: 22 July 2016 15:15</Se.nt>\r\n<To> T {[}]o: Reid, Andy &lt;andrew.reid@hpe.com&gt;;\
       \ Hardy, Dermot &lt;dermot.hardy@hpe.com&gt;</To>\r\n<Cc>C  `¬c: Ploch, Krzysztof\
