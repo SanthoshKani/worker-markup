@@ -53,7 +53,7 @@ expectedOutputData:
   - name: "PARENT_ID"
     value: "c1f80484be310b53"
   - name: "ROOT_ID"
-    value: "ed9497930bb2e9f0"
+    value: "15e75e9dfaefcf91"
   - name: "XML"
     value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<root><subject>CAF Test\
       \ Extract - simple</subject><from>Admin/hpq%HPQ@hpswlabs.hp.com</from><to>Admin/hpq%hpq@hpswlabs.hp.com</to><CONTENT><email><hash\
@@ -111,7 +111,7 @@ expectedOutputData:
       \ name=\"Normalized\"><config><fields><field name=\"To\" normalizationType=\"\
       NAME_ONLY\" /><field name=\"From\" normalizationType=\"NAME_ONLY\" /><field\
       \ name=\"Body\" normalizationType=\"REMOVE_WHITESPACE_AND_LINKS\" /></fields></config><digest\
-      \ function=\"XXHASH64\" value=\"ed9497930bb2e9f0\" /></hash><headers><From>From:\
+      \ function=\"XXHASH64\" value=\"15e75e9dfaefcf91\" /></hash><headers><From>From:\
       \ Reid, Andy</From>\r\n<Sent dateUtc=\"2016-07-19T18:49:00Z\">Sent: Tuesday,\
       \ July 19, 2016 6:49 PM</Sent>\r\n<To>To: Paul, Navamoni &lt;paul.navamoni@hpe.com&gt;;\
       \ Hardy, Dermot &lt;dermot.hardy@hpe.com&gt;</To>\r\n<Cc>Cc: Ploch, Krzysztof\
