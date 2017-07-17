@@ -41,7 +41,16 @@
             <groupId>com.github.cafdataprocessing</groupId>
             <artifactId>util-email-content-segregation</artifactId>
             <version>2.0.0-5</version>
-        </dependency> 
+        </dependency>
+        <dependency>
+            <groupId>com.github.cafdataprocessing</groupId>
+            <artifactId>worker-document-interface</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.cafdataprocessing</groupId>
+            <artifactId>worker-document-testing-unit</artifactId>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>com.github.cafdataprocessing</groupId>
             <artifactId>worker-markup-shared</artifactId>
@@ -114,11 +123,6 @@
             <groupId>com.hpe.caf.externals</groupId>
             <artifactId>natty</artifactId>
             <version>0.14.0-31</version>
-        </dependency>
-        <dependency>
-            <groupId>com.hpe.caf.worker</groupId>
-            <artifactId>worker-document-interface</artifactId>
-            <version>1.2.0-43</version>
         </dependency>
     </dependencies>
 

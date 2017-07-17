@@ -23,8 +23,10 @@ import com.hpe.caf.util.ref.ReferencedData;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
 import org.jdom2.Document;
@@ -92,7 +94,8 @@ public final class XmlConverter
             }
         }
 
-        // Return the list of xml field entries
+        //sort the xml field entries so they are not dependent on the order the sourceData fields are in
+        xmlFieldEntries.sort(Comparator.comparing(fi -> fi.getName()));
         return xmlFieldEntries;
     }
 
