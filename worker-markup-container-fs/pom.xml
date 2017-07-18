@@ -306,7 +306,7 @@
                         <!-- Configuration for the worker-markup-container image -->
                         <image>
                             <alias>worker-markup-fs</alias>
-                            <name>cafinternal/prereleases:worker-markup-${project.version}</name>
+                            <name>${dockerDataProcessingOrg}worker-markup${dockerProjectVersion}</name>
                             <build>
                                 <maintainer>conal.smith@hpe.com</maintainer>
                                 <from>${containers.jep-talon.name}</from>

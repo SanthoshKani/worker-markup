@@ -98,7 +98,10 @@
 
     <properties>
         <caf.worker-document-framework.version>3.0.0-53</caf.worker-document-framework.version>
-        <containers.jep-talon.name>cafinternal/prereleases:jep_talon-image-${project.version}</containers.jep-talon.name>
+        <containers.jep-talon.name>${dockerDataProcessingOrg}jep-talon${dockerProjectVersion}</containers.jep-talon.name>
+        <dockerHubOrganization>cafdataprocessing</dockerHubOrganization>
+        <dockerDataProcessingOrg>${dockerImagePrefix}${dockerHubOrganization}${dockerOrgSeperator}</dockerDataProcessingOrg>
+        <dockerProjectVersion>${dockerVersionSeperator}${project.version}</dockerProjectVersion>
     </properties>
 
     <dependencyManagement>
