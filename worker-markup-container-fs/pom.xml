@@ -473,15 +473,4 @@
         </profile>
     </profiles>
 
-    <repositories>
-        <repository>
-            <id>renexus-releases</id>
-            <name>Southborough Nexus Releases</name>
-            <url>http://renexus.englab.local:8081/nexus/content/repositories/releases</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
 </project>
