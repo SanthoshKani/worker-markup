@@ -16,15 +16,15 @@ The [jep-talon-install-script](https://github.com/CAFDataProcessing/worker-marku
 
 This can be used as a base image by adding the following within the build elements in your pom.xml file:
 
-    <from>${docker.dev.repo}/caf/jep_talon-image:1.2.0</from>
+    <from>cafdataprocessing/jep-talon:2.2</from>
 
 For example:
 
     <image>
-       <alias>new-worker-image</alias>
-       <name>${docker.dev.repo}/caf/new-worker-image:${project.version}</name>
+        <alias>new-worker-image</alias>
+        <name>${docker.dev.repo}/caf/new-worker-image:${project.version}</name>
         <build>
-         <maintainer>john.smith@hpe.com</maintainer>
-         <from>${docker.dev.repo}/caf/jep_talon-image:1.2.0</from>
-		</build>
+            <maintainer>john.smith@hpe.com</maintainer>
+            <from>cafdataprocessing/jep-talon:2.2</from>
+        </build>
     </image>
