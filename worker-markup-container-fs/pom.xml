@@ -186,9 +186,10 @@
                     </environmentVariables>
                 </configuration>
             </plugin>
+
             <!--
-                Builds the Docker image for the MarkupWorker, starts RabbitMQ and assembles the configuration files
-                for running the integration tests.
+                Builds the Docker image for the MarkupWorker, starts RabbitMQ and assembles the configuration files for running the
+                integration tests.
             -->
             <plugin>
                 <groupId>io.fabric8</groupId>
@@ -237,7 +238,6 @@
                     <verbose>true</verbose>
                     <autoPull>on</autoPull>
                     <images>
-
                         <image>
                             <alias>webdav</alias>
                             <name>cloudesire/webdav</name>
@@ -266,7 +266,7 @@
                                 </log>
                             </run>
                         </image>
-                        
+
                         <!-- Run the RabbitMQ image. -->
                         <image>
                             <alias>rabbitmq</alias>
@@ -409,11 +409,10 @@
                                 </wait>
                             </run>
                         </image>
-
                     </images>
                 </configuration>
             </plugin>
-            
+
             <plugin>
                 <groupId>com.mycila</groupId>
                 <artifactId>license-maven-plugin</artifactId>
@@ -453,8 +452,11 @@
                 <failsafe.timeout>120000</failsafe.timeout>
             </properties>
         </profile>
-        <!-- profile to optionally disable build of a container, you can enable this profile, and run your tests against
-        a fixed container without rebuilding each time. -->
+
+        <!--
+            Profile to optionally disable build of a container.
+            You can enable this profile, and run your tests against a fixed container without rebuilding each time.
+        -->
         <profile>
             <id>skip-build-docker-container</id>
             <build>

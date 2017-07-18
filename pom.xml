@@ -20,11 +20,11 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    
+
     <name>Markup Worker</name>
     <description>A worker used to identify elements within a document or e-mail</description>
     <url>https://github.com/CAFDataProcessing/worker-markup</url>
-    
+
     <parent>
         <groupId>com.github.cafapi</groupId>
         <artifactId>caf-common</artifactId>
@@ -35,14 +35,14 @@
     <artifactId>worker-markup-aggregator</artifactId>
     <version>2.2.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    
+
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
-    
+
     <developers>
         <developer>
             <id>dermot-hardy</id>
@@ -96,8 +96,6 @@
         </developer>
     </developers>
 
-    
-    
     <properties>
         <caf.worker-document.version>3.0.0-SNAPSHOT</caf.worker-document.version>
         <containers.jep-talon.name>cafinternal/prereleases:jep_talon-image-${project.version}</containers.jep-talon.name>
