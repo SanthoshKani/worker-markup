@@ -55,12 +55,6 @@ public class MarkupWorkerFactory extends AbstractWorkerFactory<MarkupWorkerConfi
         return MarkupWorkerConstants.WORKER_API_VER;
     }
 
-    @Override
-    public void shutdown()
-    {
-        markupDocument.close();
-    }
-
     /**
      * Create a worker given a task, using DataStore, ConfiguratonSource and Codec passed in the constructor.
      *
