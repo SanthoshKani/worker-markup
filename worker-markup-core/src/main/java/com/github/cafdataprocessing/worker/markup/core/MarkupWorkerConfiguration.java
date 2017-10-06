@@ -31,6 +31,11 @@ import com.hpe.caf.api.worker.WorkerConfiguration;
 public class MarkupWorkerConfiguration extends WorkerConfiguration
 {
     /**
+     * Whether headers for emails should be added to the start of a specified field
+     */
+    private boolean addEmailHeadersDuringMarkup;
+
+    /**
      * Output queue to return results to RabbitMQ.
      */
     @NotNull
@@ -59,6 +64,16 @@ public class MarkupWorkerConfiguration extends WorkerConfiguration
 
     public MarkupWorkerConfiguration()
     {
+    }
+
+    public boolean shouldAddEmailHeadersDuringMarkup()
+    {
+        return addEmailHeadersDuringMarkup;
+    }
+
+    public void setAddEmailHeadersDuringMarkup(boolean addEmailHeadersDuringMarkup)
+    {
+        this.addEmailHeadersDuringMarkup = addEmailHeadersDuringMarkup;
     }
 
     public String getOutputQueue()

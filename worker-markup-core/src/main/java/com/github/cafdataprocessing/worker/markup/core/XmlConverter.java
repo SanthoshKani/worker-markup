@@ -15,18 +15,13 @@
  */
 package com.github.cafdataprocessing.worker.markup.core;
 
+import com.github.cafdataprocessing.worker.markup.core.exceptions.AddHeadersException;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Multimap;
 import com.hpe.caf.api.worker.TaskFailedException;
 import com.hpe.caf.util.ref.DataSource;
 import com.hpe.caf.util.ref.DataSourceException;
 import com.hpe.caf.util.ref.ReferencedData;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
 import org.jdom2.Document;
@@ -34,9 +29,24 @@ import org.jdom2.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.*;
+import java.util.stream.Collectors;
+
 public final class XmlConverter
 {
+    private static final Map<String, String> HEADER_DISPLAY_NAMES_TO_SOURCES = ImmutableMap.<String, String> builder()
+            .put("From", "from")
+            .put("To", "to")
+            .put("CC", "cc")
+            .put("BCC", "bcc")
+            .put("Date", "sent")
+            .put("Subject", "subject")
+            .put("Importance", "priority")
+            .build();
     private static final Logger LOG = LoggerFactory.getLogger(XmlConverter.class);
+
 
     private XmlConverter()
     {
@@ -47,9 +57,17 @@ public final class XmlConverter
      *
      * @param dataSource the remote data store which can be used to resolve the values of reference fields
      * @param sourceData the value of the field, or a reference that can be used to retrieve the value of the field
+     * @param isEmail whether the entries are being retrieved for an email
+     * @param shouldAddEmailHeaders whether email headers should be added to the generated xml field entry for CONTENT
+     *
      * @return a list of name-value pairs which can be used to create xml elements without further sanitisation
+     * @throws AddHeadersException if there is a failure adding email headers to field value
      */
-    public static List<XmlFieldEntry> getXmlFieldEntries(final DataSource dataSource, final Multimap<String, ReferencedData> sourceData)
+    public static List<XmlFieldEntry> getXmlFieldEntries(final DataSource dataSource,
+                                                         final Multimap<String, ReferencedData> sourceData,
+                                                         final boolean isEmail,
+                                                         final boolean shouldAddEmailHeaders)
+            throws AddHeadersException
     {
         // Get the collection of fields
         final Collection<Map.Entry<String, ReferencedData>> fields = sourceData.entries();
@@ -94,6 +112,10 @@ public final class XmlConverter
             }
         }
 
+        if(isEmail && shouldAddEmailHeaders){
+            addEmailHeadersToXmlFieldEntries(xmlFieldEntries);
+        }
+
         //sort the xml field entries so they are not dependent on the order the sourceData fields are in
         xmlFieldEntries.sort(Comparator.comparing(fi -> fi.getName()));
         return xmlFieldEntries;
@@ -123,6 +145,52 @@ public final class XmlConverter
         return doc;
     }
 
+    private static void addEmailHeadersToXmlFieldEntries(List<XmlFieldEntry> sourceEntries)
+            throws AddHeadersException
+    {
+        StringBuilder headersBuilder = new StringBuilder();
+        // Build headers
+        for(Map.Entry<String, String> displayNameToSource: HEADER_DISPLAY_NAMES_TO_SOURCES.entrySet()) {
+            appendEmailHeaderToBuilder(headersBuilder, displayNameToSource.getKey(), displayNameToSource.getValue(),
+                    sourceEntries);
+        }
+
+        // Add a new line indicating break in headers section.
+        headersBuilder.append("\n");
+
+        for(XmlFieldEntry entryToUpdate: sourceEntries.stream()
+                .filter(ent -> ent.getName().equals("CONTENT"))
+                .collect(Collectors.toList())){
+            entryToUpdate.setText(headersBuilder.toString() + entryToUpdate.getText());
+        }
+    }
+
+    private static void appendEmailHeaderToBuilder(StringBuilder headersBuilder, String headerStartText,
+                                                   String headerSourceFieldName, List<XmlFieldEntry> sourceEntries)
+        throws AddHeadersException
+    {
+        List<String> headerValues = sourceEntries.stream()
+                .filter(ent -> ent.getName().toLowerCase(Locale.ENGLISH).equals(headerSourceFieldName))
+                .map(ent -> ent.getText())
+                .collect(Collectors.toList());
+
+        if(headerValues.isEmpty()){
+            LOG.info("No '" + headerSourceFieldName + "' values to add in email headers during markup.");
+        }
+        else if (headerValues.size() > 1) {
+            throw new AddHeadersException("Unable to add email headers. Multiple field entries found for header: "
+                    +headerSourceFieldName);
+        }
+        else{
+            headersBuilder.append(headerStartText+": ");
+            String headerValue = headerSourceFieldName.equals("priority")
+                    ? Normalizations.normalizePriority(headerValues.get(0))
+                    : headerValues.get(0);
+            headersBuilder.append(headerValue);
+            headersBuilder.append("\n");
+        }
+    }
+
     private static String getContentAsStringEx(final DataSource dataSource, final Map.Entry<String, ReferencedData> referencedDataEntry)
     {
         try {
@@ -137,15 +205,17 @@ public final class XmlConverter
     private static String getContentAsString(DataSource dataSource, Map.Entry<String, ReferencedData> referencedDataEntry)
         throws DataSourceException, IOException
     {
-        final byte[] refDataBytes = IOUtils.toByteArray(referencedDataEntry.getValue().acquire(dataSource));
-
-        try {
-            // Get content using UTF-8
-            return IOUtils.toString(refDataBytes, "UTF-8");
-        } catch (Exception e) {
-            // Catch and retry with 1252 encoding.
-            LOG.error("Failed to convert to utf8", e);
-            return IOUtils.toString(refDataBytes, "Windows-1252");
+        try(InputStream dataStream = referencedDataEntry.getValue().acquire(dataSource))
+        {
+            final byte[] refDataBytes = IOUtils.toByteArray(dataStream);
+            try {
+                // Get content using UTF-8
+                return IOUtils.toString(refDataBytes, "UTF-8");
+            } catch (Exception e) {
+                // Catch and retry with 1252 encoding.
+                LOG.error("Failed to convert to utf8", e);
+                return IOUtils.toString(refDataBytes, "Windows-1252");
+            }
         }
     }
 }
