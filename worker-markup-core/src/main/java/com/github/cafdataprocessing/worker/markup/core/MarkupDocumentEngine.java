@@ -18,6 +18,7 @@ package com.github.cafdataprocessing.worker.markup.core;
 import com.github.cafdataprocessing.worker.markup.core.Hashing.HashHelper;
 import com.github.cafdataprocessing.worker.markup.core.exceptions.AddHeadersException;
 import com.github.cafdataprocessing.worker.markup.core.exceptions.MarkupWorkerExceptions;
+import com.google.common.base.Strings;
 import com.google.common.collect.Multimap;
 import com.hpe.caf.api.Codec;
 import com.hpe.caf.api.ConfigurationException;
@@ -60,11 +61,14 @@ public class MarkupDocumentEngine
         final Codec codec = document.getApplication().getService(Codec.class);
 
         String addEmailHeadersDuringMarkupOverrideStr = document.getCustomData("addEmailHeadersDuringMarkup");
+        Boolean addEmailHeadersDuringMarkup = Strings.isNullOrEmpty(addEmailHeadersDuringMarkupOverrideStr)
+                ? null
+                : Boolean.parseBoolean(addEmailHeadersDuringMarkupOverrideStr);
 
         try {
             MarkupWorkerResult result = markupDocument(ConvertSourceData.getSourceData(document), hashConfiguration,
                     outputFields, isEmail, codec, dataStore, config, emailSplitter,
-                    Boolean.parseBoolean(addEmailHeadersDuringMarkupOverrideStr));
+                    addEmailHeadersDuringMarkup);
             ConvertWorkerResult.updateDocument(document, result);
         } catch (JDOMException jdome) {
             LOG.error("Error during JDOM parsing. ", jdome);
