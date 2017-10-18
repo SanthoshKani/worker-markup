@@ -40,6 +40,7 @@
         "PRIORITY" : "priority",
         "ADDRESS_CC" : "cc",
         "ADDRESS_FROM" : "from",
-        "ADDRESS_TO" : "to"
+        "ADDRESS_TO" : "to",
+        "IS_HEAD_OF_FAMILY": "IS_FAMILY_ORIGIN"
     }
 });
