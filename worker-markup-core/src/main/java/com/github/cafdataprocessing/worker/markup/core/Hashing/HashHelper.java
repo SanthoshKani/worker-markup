@@ -52,14 +52,14 @@ public class HashHelper
     private static final Logger LOG = LoggerFactory.getLogger(HashHelper.class);
 
     /*
-     * Location where to preform hash
+     * Location where to perform hash
      *
      * @param Document - the JDOM2 document we want to perform hash
-     * @param List<HashConfiguration> - The list of hash configurations to be preformed
+     * @param List<HashConfiguration> - The list of hash configurations to be performed
      */
     public static void generateHashes(Document document, List<HashConfiguration> hashConfiguration) throws JDOMException
     {
-        LOG.info("Identifying where to preform hash.");
+        LOG.info("Identifying where to perform hash.");
         if (hashConfiguration != null) {
             for (HashConfiguration config : hashConfiguration) {
                 validateInputs(document, config);
