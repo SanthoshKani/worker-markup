@@ -30,5 +30,4 @@
         "On": ["Le", "W dniu", "Op", "Am", "På", "Den"],
         "Separator": ["użytkownik"],
         "Wrote": ["a écrit", "napisał", "schreef", "verzond", "geschreven", "schrieb", "skrev"]
-    }
-});
+}});
