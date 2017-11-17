@@ -15,6 +15,7 @@
  */
 package com.github.cafdataprocessing.worker.markup.core;
 
+import com.github.cafdataprocessing.worker.markup.core.exceptions.MappingException;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Multimap;
 import com.hpe.caf.util.ref.ReferencedData;
@@ -33,7 +34,7 @@ public class FieldNameMapperTest
     ReferencedData secondMailInReplyTo = ReferencedData.getWrappedData("another mail reply to".getBytes());
 
     @Test
-    public void shouldTransformMultimapContainingDuplicateKvMsgFormatFieldNamesToCafMailFieldNames()
+    public void shouldTransformMultimapContainingDuplicateKvMsgFormatFieldNamesToCafMailFieldNames() throws MappingException
     {
         Multimap<String, ReferencedData> dataMap = LinkedListMultimap.create();
 
@@ -55,7 +56,7 @@ public class FieldNameMapperTest
     }
 
     @Test
-    public void shouldTransformMultimapContainingDuplicateKvEmlFieldNamesToCafMailFieldNames()
+    public void shouldTransformMultimapContainingDuplicateKvEmlFieldNamesToCafMailFieldNames() throws MappingException
     {
         Multimap<String, ReferencedData> dataMap = LinkedListMultimap.create();
 
