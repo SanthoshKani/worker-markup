@@ -102,7 +102,7 @@
     </developers>
 
     <properties>
-        <caf.worker-document-framework.version>3.1.1-71</caf.worker-document-framework.version>
+        <caf.worker-document-framework.version>3.4.0-SNAPSHOT</caf.worker-document-framework.version>
         <containers.jep-talon.name>${dockerDataProcessingOrg}jep-talon${dockerProjectVersion}</containers.jep-talon.name>
         <dockerHubOrganization>cafdataprocessing</dockerHubOrganization>
         <dockerDataProcessingOrg>${dockerImagePrefix}${dockerHubOrganization}${dockerOrgSeperator}</dockerDataProcessingOrg>
