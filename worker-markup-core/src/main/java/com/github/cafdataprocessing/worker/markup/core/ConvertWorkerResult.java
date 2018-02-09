@@ -17,6 +17,8 @@ package com.github.cafdataprocessing.worker.markup.core;
 
 import com.hpe.caf.worker.document.model.Document;
 import com.hpe.caf.worker.markup.MarkupWorkerResult;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -30,10 +32,16 @@ public class ConvertWorkerResult
 
     public static void updateDocument(final Document document, final MarkupWorkerResult markupWorkerResult)
     {
-        document.getField("MARKUPWORKER_STATUS").add(markupWorkerResult.workerStatus.toString());
+        document.getField("MARKUPWORKER_STATUS").set(markupWorkerResult.workerStatus.toString());
         
+        List<String> updatedFields = new ArrayList();
         markupWorkerResult.fieldList.forEach((entry) -> {
-            document.getField(entry.name).add(entry.value);
+            String fieldName = entry.name;
+            if(!updatedFields.contains(fieldName)) {
+                document.getField(fieldName).clear();
+                updatedFields.add(fieldName);
+            }
+            document.getField(fieldName).add(entry.value);
         });
     }
 }
