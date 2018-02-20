@@ -11,3 +11,6 @@ ${version-number}
 [SCMOD-3065](https://jira.autonomy.com/browse/SCMOD-3065): Updated regex to avoid StackOverflowErrors when performing email splitting.
 
 #### Known Issues
+
+#### Breaking Changes
+- [SCMOD-3023](https://jira.autonomy.com/browse/SCMOD-3023): Values modified by the worker are set and not added.
