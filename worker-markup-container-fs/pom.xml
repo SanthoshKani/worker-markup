@@ -72,11 +72,6 @@
             <type>tar.gz</type>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>com.github.cafapi</groupId>
-            <artifactId>container-cert-script</artifactId>
-            <type>tar.gz</type>
-        </dependency>
     </dependencies>
 
     <build>
@@ -309,20 +304,16 @@
                             <name>${dockerDataProcessingOrg}worker-markup${dockerProjectVersion}</name>
                             <build>
                                 <maintainer>conal.smith@hpe.com</maintainer>
-                                <from>${containers.jep-talon.name}</from>
+                                <from>cafinternal/prereleases:opensuse-jeptalon-1.0.0-SNAPSHOT</from>
                                 <labels>
                                     <Build.Number>${project.version}</Build.Number>
                                     <Build.Date>${maven.build.timestamp}</Build.Date>
                                     <Git.Branch>${git.branch}</Git.Branch>
                                     <Git.Commit>${git.revision}</Git.Commit>
                                 </labels>
-
-                                <!-- The entry point will be the worker.sh executable. -->
-                                <entryPoint>
-                                    <exec>
-                                        <args>/maven/worker.sh</args>
-                                    </exec>
-                                </entryPoint>
+                                <cmd>
+                                    /maven/worker.sh
+                                </cmd>
                                 <assembly>
                                     <mode>tar</mode>
                                     <inline>
@@ -354,7 +345,6 @@
                                                 <useProjectArtifact>false</useProjectArtifact>
                                                 <scope>runtime</scope>
                                                 <excludes>
-                                                    <exclude>com.github.cafapi:container-cert-script</exclude>
                                                     <exclude>com.github.cafdataprocessing:util-email-content-segregation-script</exclude>
                                                 </excludes>
                                             </dependencySet>
@@ -362,7 +352,6 @@
                                                 <useProjectArtifact>false</useProjectArtifact>
                                                 <unpack>true</unpack>
                                                 <includes>
-                                                    <include>com.github.cafapi:container-cert-script</include>
                                                     <include>com.github.cafdataprocessing:util-email-content-segregation-script</include>
                                                 </includes>
                                             </dependencySet>
