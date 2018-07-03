@@ -180,6 +180,9 @@ public class MarkupHeadersAndBody
             }
         }
         LOG.info("Markup of Headers and Body complete");
+
+        // Untags emails with empty headers
+        EmailSquash.untagFalseEmails(parentElement);
     }
 
     /**
