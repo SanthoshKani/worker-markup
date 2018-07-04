@@ -28,6 +28,7 @@ import com.hpe.caf.api.worker.DataStore;
 import com.hpe.caf.api.worker.InvalidTaskException;
 import com.hpe.caf.api.worker.Worker;
 import com.hpe.caf.api.worker.WorkerException;
+import com.hpe.caf.api.worker.WorkerTaskData;
 import com.hpe.caf.worker.AbstractWorkerFactory;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -71,11 +72,12 @@ public class MarkupWorkerFactory extends AbstractWorkerFactory<MarkupWorkerConfi
      * Create a worker given a task, using DataStore, ConfiguratonSource and Codec passed in the constructor.
      *
      * @param task
+     * @param workerTaskData
      * @return MarkupWorker
      * @throws InvalidTaskException
      */
     @Override
-    public Worker createWorker(MarkupWorkerTask task) throws InvalidTaskException
+    public Worker createWorker(final MarkupWorkerTask task, final WorkerTaskData workerTaskData) throws InvalidTaskException
     {
         return new MarkupWorker(
             task,
@@ -84,7 +86,8 @@ public class MarkupWorkerFactory extends AbstractWorkerFactory<MarkupWorkerConfi
             getCodec(),
             config,
             markupDocument,
-            emailSplitter);
+            emailSplitter,
+            workerTaskData);
     }
 
     @Override
