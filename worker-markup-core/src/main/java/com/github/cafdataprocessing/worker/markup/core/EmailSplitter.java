@@ -32,6 +32,8 @@ public class EmailSplitter
     // The DIVIDER_GROUP_ID specifies the capturing group which contains the DIVIDER_REGEX.
     public static final int DIVIDER_GROUP_ID = 2;
 
+    private static final String FORWARDED_MESSAGE_CHECKER = "--";
+
     private final JepExecutor jepExec;
     private final Pattern dividerPattern;
 
@@ -63,6 +65,8 @@ public class EmailSplitter
         LOG.info("Starting email splitting based on document received");
         validateDocument(doc);
 
+        Matcher matcher = null;
+
         for (Element e : doc.getRootElement().getChildren("CONTENT")) {
             final String stringToSplit = e.getText();
             final List<String> emailList = getSeparatedEmails(stringToSplit);
@@ -70,13 +74,20 @@ public class EmailSplitter
             e.removeContent();
 
             for (String email : emailList) {
-                // We will attempt to match the regex to find "---------- Forwarded Message ---------" or similar dividers
-                Matcher matcher = dividerPattern.matcher(email);
+               
                 String divider = null; // null to make a decision later.
                 // If we find a match, strip out the divider from the email text.
-                if (matcher.find()) {
-                    divider = matcher.group(DIVIDER_GROUP_ID);//group 1 matches the divider in the regex above
-                    email = email.substring(0, email.indexOf(divider));
+                if (email.contains(FORWARDED_MESSAGE_CHECKER)) {
+                     // We will attempt to match the regex to find "---------- Forwarded Message ---------" or similar dividers
+                    if (matcher == null) {
+                        matcher = dividerPattern.matcher(email);
+                    } else {
+                        matcher = matcher.reset(email);
+                    }
+                    if (matcher.find()) {
+                        divider = matcher.group(DIVIDER_GROUP_ID);//group 1 matches the divider in the regex above
+                        email = email.substring(0, email.indexOf(divider));
+                    }
                 }
 
                 // If the email text is empty, do not mark up an empty email with email tags.

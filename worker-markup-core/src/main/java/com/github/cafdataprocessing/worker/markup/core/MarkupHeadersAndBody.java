@@ -35,9 +35,12 @@ public class MarkupHeadersAndBody
     private static final Logger LOG = LoggerFactory.getLogger(MarkupHeadersAndBody.class);
 
     public static final String UNREADABLE_HEADER = "UnreadableHeader";
-    public static final String FROM_FIELD_WITH_ASTERISKS_SPLIT_ONTO_TWO_LINES_REGEX =
-            "(?<FirstPartFromField>[> ]{0,}\\*.*:\\*[A-z0-9][-A-z0-9_\\+\\.]*[A-z0-9]@[A-z0-9][-A-z0-9\\.]*[A-z0-9]\\.[A-z0-9]{1,3}[\\r]?)\\n" +
-            "(?<SecondPartFromField>[> ]{0,}\\[.*:[A-z0-9][-A-z0-9_\\+\\.]*[A-z0-9]@[A-z0-9][-A-z0-9\\.]*[A-z0-9]\\.[A-z0-9]{1,3}\\].*[\\r]?)";
+    public static final String FROM_FIELD_WITH_ASTERISKS_SPLIT_ONTO_TWO_LINES_REGEX
+        = "(?<FirstPartFromField>[> ]{0,}\\*.*:\\*[A-z0-9][-A-z0-9_\\+\\.]*[A-z0-9]@[A-z0-9][-A-z0-9\\.]*[A-z0-9]\\.[A-z0-9]{1,3}[\\r]?)\\n"
+        + "(?<SecondPartFromField>[> ]{0,}\\[.*:[A-z0-9][-A-z0-9_\\+\\.]*[A-z0-9]@[A-z0-9][-A-z0-9\\.]*[A-z0-9]\\.[A-z0-9]{1,3}\\].*[\\r]?)";
+    public static final String GENERAL_CHECK_ONE = ">";
+    public static final String GENERAL_CHECK_TWO = "*";
+    public static final String GENERAL_CHECK_THREE = "\n";
 
     /*
       The following GROUP_IDs correspond to the capturing groups in the RE_ON_DATE_SMB_WROTE regular expression.
@@ -55,6 +58,7 @@ public class MarkupHeadersAndBody
     private final Map<String, List<String>> emailHeaderMappings;
     private final Pattern condensedHeaderRegEx;
     private final Pattern fromFieldSplitOntoTwoLines;
+    private final List<String> multilangHeadersElements;
 
     public MarkupHeadersAndBody(
         final Map<String, List<String>> emailHeaderMappings,
@@ -65,6 +69,7 @@ public class MarkupHeadersAndBody
 
         // Set up the regular expression that matches the condensed header
         final String onDateSomebodyWroteRegEx = regexSetup(condensedHeaderMultilangMappings);
+        this.multilangHeadersElements = getListOfElementsFromCondensedHeaderMultilangMappings(condensedHeaderMultilangMappings);
         this.condensedHeaderRegEx = Pattern.compile(onDateSomebodyWroteRegEx);
         this.fromFieldSplitOntoTwoLines = Pattern.compile(FROM_FIELD_WITH_ASTERISKS_SPLIT_ONTO_TWO_LINES_REGEX);
     }
@@ -111,6 +116,8 @@ public class MarkupHeadersAndBody
 
         final Parser nattyParser = new Parser(TimeZone.getTimeZone("UTC"));
 
+        Matcher splitFromFieldMatcher = null;
+
         for (final Element emailElement : emailElements) {
             final String emailText = emailElement.getText();
             final String emailValueAtStart = emailElement.getValue();
@@ -137,15 +144,27 @@ public class MarkupHeadersAndBody
 
             // Check to see if the a field name is surrounded with '*' and it's value is split onto two lines,
             // each line containing an email address.
-            final Matcher splitFromFieldMatcher = fromFieldSplitOntoTwoLines.matcher(emailText);
-
-            if (splitFromFieldMatcher.find()) {
-                handleHeaderWithAsterisks(emailText, lines, fromHeaderFieldValues);
+            if (splitFromFieldMatcher == null) {
+                splitFromFieldMatcher = fromFieldSplitOntoTwoLines.matcher(emailText);
+            } else {
+                splitFromFieldMatcher = splitFromFieldMatcher.reset(emailText);
             }
+
+            if (emailText.contains(GENERAL_CHECK_ONE) && emailText.contains(GENERAL_CHECK_TWO) && emailText.contains(GENERAL_CHECK_THREE)) {
+                if (splitFromFieldMatcher.find()) {
+                    handleHeaderWithAsterisks(lines, fromHeaderFieldValues, splitFromFieldMatcher);
+                }
+            }
+
+            Matcher matcher = null;
 
             for (String line : lines) {
                 // Compile the regex and evaluate to get matches for the line
-                Matcher matcher = condensedHeaderRegEx.matcher(line);
+                if (matcher == null) {
+                    matcher = condensedHeaderRegEx.matcher(line);
+                } else {
+                    matcher = matcher.reset(line);
+                }
                 // If the the From field is split onto two lines, these lines need to be concatenated and marked up together.
                 // Once there is a match for the second part of the <From> value just increase the bodyIndex.
                 if (fromHeaderFieldValues.contains(line)) {
@@ -155,7 +174,7 @@ public class MarkupHeadersAndBody
                         addStandardisedHeader(nattyParser, headersElement, lines, fullFromFieldValue, ":\\*");
                     }
                 } // Only enter this block if we get a match i.e. line is "On xxx, abc wrote:"
-                else if (matcher.find()) {
+                else if (checkPresenceOfMultilangHeadersElements(line) && matcher.find()) {
                     bodyIndex++;
                     addCondensedHeader(nattyParser, headersElement, line, matcher);
                 } // Check if the line is a header i.e. TO: xxx, making sure it is not a "On x smb wrote:" with a space after the ":"
@@ -166,7 +185,7 @@ public class MarkupHeadersAndBody
                 else if (line.contains(":*")) {
                     bodyIndex++;
                     addStandardisedHeader(nattyParser, headersElement, lines, line, ":\\*");
-                }else {
+                } else {
                     break;
                 }
             }
@@ -186,28 +205,35 @@ public class MarkupHeadersAndBody
     }
 
     /**
+     * This method checks if the string passed contains any element from the list of multilanguage headers.
+     * 
+     * @param input a string to be checked
+     * @return true if some element has been found, false otherwise
+     */
+    private boolean checkPresenceOfMultilangHeadersElements(final String input)
+    {
+        return multilangHeadersElements.parallelStream().anyMatch(input::contains);
+    }
+
+    /**
      * Handle the correct markup of the From header field which is surrounded with '*' (i.e *From:*), and split onto two lines.
      *
      * @param emailText the email text that is to be marked up.
      * @param lines the emailText as separate lines.
      * @param fromHeaderFieldValues the full field value for the 'From' header.
      */
-    private void handleHeaderWithAsterisks(final String emailText, final String[] lines, final List<String> fromHeaderFieldValues)
+    private void handleHeaderWithAsterisks(final String[] lines, final List<String> fromHeaderFieldValues,
+                                           final Matcher splitFromFieldMatcher)
     {
-        // Check to see if the the from field is split onto two lines.
-        final Matcher splitFromFieldMatcher = fromFieldSplitOntoTwoLines.matcher(emailText);
-
-        if (splitFromFieldMatcher.find()) {
-            for (final String line : lines) {
-                // For a line which matches the format:
-                // "*From:*example.emailaddress.com
-                // [mailto:example.emailaddress.com] *On Behalf Of *Bloggs, Joe"
-                // Add these lines to a list so that they can be marked up together later.
-                if (line.equals(splitFromFieldMatcher.group("FirstPartFromField"))) {
-                    fromHeaderFieldValues.add(line);
-                } else if (line.equals(splitFromFieldMatcher.group("SecondPartFromField"))) {
-                    fromHeaderFieldValues.add(line);
-                }
+        for (final String line : lines) {
+            // For a line which matches the format:
+            // "*From:*example.emailaddress.com
+            // [mailto:example.emailaddress.com] *On Behalf Of *Bloggs, Joe"
+            // Add these lines to a list so that they can be marked up together later.
+            if (line.equals(splitFromFieldMatcher.group("FirstPartFromField"))) {
+                fromHeaderFieldValues.add(line);
+            } else if (line.equals(splitFromFieldMatcher.group("SecondPartFromField"))) {
+                fromHeaderFieldValues.add(line);
             }
         }
     }
@@ -460,6 +486,27 @@ public class MarkupHeadersAndBody
         // Join the arrays into one string separated with or separator "|".
         return "(-*[>]?[ ]?(" + String.join("|", on_pattern_quoted) + ")[ ])(.*)(" + String.join("|", separator_pattern_quoted)
             + ")((.*\\n){0,2}.*)((" + String.join("|", wrote_pattern_quoted) + "):?-*.*)";
+    }
+
+    /**
+     * This method creates a list of elements that could be present in the headers that we are looking for in various languages.
+     * 
+     * It is used to do a preliminary check on a stringbefore using the Matcher.find() method, which is potentially more expensive.
+     * 
+     * @param condensedHeaderMultilangMappings
+     * @return a list with all he values of the param
+     */
+    private List<String> getListOfElementsFromCondensedHeaderMultilangMappings(Map<String, List<String>> condensedHeaderMultilangMappings)
+    {
+        final Set<String> result = new HashSet<>();
+        if (condensedHeaderMultilangMappings != null && !condensedHeaderMultilangMappings.isEmpty()) {
+            condensedHeaderMultilangMappings.values().stream().flatMap(x -> x.stream()).forEach(result::add);
+        }
+        result.add("On");
+        result.add(",");
+        result.add("wrote");
+        result.add("sent");
+        return new ArrayList<>(result);
     }
 
     /**
